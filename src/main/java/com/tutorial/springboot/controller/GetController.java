@@ -19,16 +19,22 @@ public class GetController {
 
 	@GetMapping(value = "/path/{path}")
 	public ResponseEntity<Object> getMappingWithPath(@PathVariable(name = "path") String pathParam) {
-		return ResponseEntity.status(HttpStatus.OK).body("GetMapping [PathParam] success");
+		System.out.println("GetMapping pathParam = " + pathParam);
+		return ResponseEntity.status(HttpStatus.OK)
+				.body("GetMapping [PathParam] success, @PathVariable = " + pathParam);
 	}
 
 	@GetMapping(value = "query")
 	public ResponseEntity<Object> getMappingWithQuery(@RequestParam(name = "query") String queryParam) {
-		return ResponseEntity.status(HttpStatus.OK).body("GetMapping [QueryParam] success");
+		System.out.println("GetMapping queryParam = " + queryParam);
+		return ResponseEntity.status(HttpStatus.OK)
+				.body("GetMapping [QueryParam] success, @RequestParam = " + queryParam);
 	}
-	
+
 	@GetMapping(value = "header")
 	public ResponseEntity<Object> getMappingWithHeader(@RequestHeader(name = "header") String requestHeader) {
-		return ResponseEntity.status(HttpStatus.OK).body("GetMapping [RequestHeader] success");
+		System.out.println("GetMapping requestHeader =" + requestHeader);
+		return ResponseEntity.status(HttpStatus.OK)
+				.body("GetMapping [RequestHeader] success, @RequestHeader = " + requestHeader);
 	}
 }

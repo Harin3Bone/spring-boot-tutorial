@@ -23,10 +23,22 @@ public class PostController {
 		System.out.println("PostMapping with JSONObject");
 		return ResponseEntity.status(HttpStatus.CREATED).body("PostMapping with JSONObject, Body = " + body);
 	}
-	
+
 	@PostMapping(value = "/body/arr")
-	public ResponseEntity<Object> postMappingWithArr(@RequestBody List<Object> body){
+	public ResponseEntity<Object> postMappingWithArr(@RequestBody List<Object> body) {
 		System.out.println("PostMapping with JSONArray");
 		return ResponseEntity.status(HttpStatus.CREATED).body("PostMapping with JSONArray, Body = " + body);
+	}
+
+	@PostMapping(value = "/consumes", consumes = "application/json")
+	public ResponseEntity<Object> postMappingByConsume(@RequestBody Map<String, Object> body) {
+		System.out.println("PostMapping with Consumes application/json");
+		return ResponseEntity.status(HttpStatus.CREATED).body("PostMapping with Consumes application/json");
+	}
+	
+	@PostMapping(value = "/produces", produces = "application/json")
+	public ResponseEntity<Object> postMappingByProduce(@RequestBody Map<String, Object> body) {
+		System.out.println("PostMapping with Produces application/json");
+		return ResponseEntity.status(HttpStatus.CREATED).body("PostMapping with Produces application/json");
 	}
 }

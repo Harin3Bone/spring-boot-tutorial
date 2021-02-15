@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,5 +25,10 @@ public class GetController {
 	@GetMapping(value = "query")
 	public ResponseEntity<Object> getMappingWithQuery(@RequestParam(name = "query") String queryParam) {
 		return ResponseEntity.status(HttpStatus.OK).body("GetMapping [QueryParam] success");
+	}
+	
+	@GetMapping(value = "header")
+	public ResponseEntity<Object> getMappingWithHeader(@RequestHeader(name = "header") String requestHeader) {
+		return ResponseEntity.status(HttpStatus.OK).body("GetMapping [RequestHeader] success");
 	}
 }

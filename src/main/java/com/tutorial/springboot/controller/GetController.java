@@ -8,15 +8,27 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * @author Harin Thananam
+ * @since 15 FEB 2021
+ * @category GET Example
+ * */
+
 @RestController
 public class GetController {
 
+	/**
+	 * @apiNote http://localhost:3000/simple
+	 * */
 	@GetMapping(value = "/simple")
 	public ResponseEntity<Object> getMapping() {
 		System.out.println("GetMapping");
 		return ResponseEntity.status(HttpStatus.OK).body("GetMapping success");
 	}
 
+	/**
+	 * @apiNote http://localhost:3000/path/data
+	 * */
 	@GetMapping(value = "/path/{path}")
 	public ResponseEntity<Object> getMappingWithPath(@PathVariable(name = "path") String pathParam) {
 		System.out.println("GetMapping pathParam = " + pathParam);
@@ -24,6 +36,9 @@ public class GetController {
 				.body("GetMapping [PathParam] success, @PathVariable = " + pathParam);
 	}
 
+	/**
+	 * @apiNote http://localhost:3000/query?query=123
+	 * */
 	@GetMapping(value = "query")
 	public ResponseEntity<Object> getMappingWithQuery(@RequestParam(name = "query") String queryParam) {
 		System.out.println("GetMapping queryParam = " + queryParam);
@@ -31,6 +46,10 @@ public class GetController {
 				.body("GetMapping [QueryParam] success, @RequestParam = " + queryParam);
 	}
 
+	/**
+	 * @apiNote http://localhost:3000/header 
+	 * @hidden header 
+	 * */
 	@GetMapping(value = "header")
 	public ResponseEntity<Object> getMappingWithHeader(@RequestHeader(name = "header") String requestHeader) {
 		System.out.println("GetMapping requestHeader =" + requestHeader);

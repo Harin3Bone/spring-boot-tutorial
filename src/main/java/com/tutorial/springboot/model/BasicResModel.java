@@ -2,11 +2,8 @@ package com.tutorial.springboot.model;
 
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import lombok.Getter;
-import lombok.Setter;
-
 @ResponseBody
-public class BasicResponseModel {
+public class BasicResModel {
 
 	private String message;
 	
@@ -28,7 +25,7 @@ public class BasicResponseModel {
 		this.data = data;
 	}
 
-	public BasicResponseModel(String message, Object data) {
+	public BasicResModel(String message, Object data) {
 		super();
 		this.message = message;
 		this.data = data;

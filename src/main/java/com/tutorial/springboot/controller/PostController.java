@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -70,5 +71,17 @@ public class PostController {
 	public ResponseEntity<Object> postMappingByProduce(@RequestBody Map<String, Object> body) {
 		System.out.println("PostMapping with Produces application/json");
 		return ResponseEntity.status(HttpStatus.CREATED).body("PostMapping with Produces application/json");
+	}
+	
+	@PostMapping(value = "/consumes/another", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> postMappingByConsumeAnotherWay(@RequestBody Map<String, Object> body) {
+		System.out.println("PostMapping with Consumes MediaType.APPLICATION_JSON_VALUE");
+		return ResponseEntity.status(HttpStatus.CREATED).body("PostMapping with Consumes MediaType.APPLICATION_JSON_VALUE");
+	}
+	
+	@PostMapping(value = "/produces/another", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> postMappingByProduceAnotherWay(@RequestBody Map<String, Object> body) {
+		System.out.println("PostMapping with Produces MediaType.APPLICATION_JSON_VALUE");
+		return ResponseEntity.status(HttpStatus.CREATED).body("PostMapping with Produces MediaType.APPLICATION_JSON_VALUE");
 	}
 }

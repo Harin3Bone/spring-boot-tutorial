@@ -14,6 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tutorial.springboot.service.MainService;
 
+/**
+ * @author Harin Thananam
+ * @since 17 FEB 2021
+ * @category Service Example
+ */
+
 @RestController
 @RequestMapping(value = "/service")
 public class ServiceController {
@@ -21,6 +27,10 @@ public class ServiceController {
 	@Autowired
 	public MainService mainService;
 	
+	/**
+	 * @apiNote http://localhost:3000/service/simple
+	 * @response text/plain
+	 */
 	@GetMapping(value = "/simple")
 	public ResponseEntity<Object> getSimpleService(){
 		System.out.println("MainController.java, getSimpleService()");
@@ -28,13 +38,21 @@ public class ServiceController {
 		return ResponseEntity.status(HttpStatus.OK).body(res);
 	}
 	
-	@GetMapping(value = "/hashmap")
+	/**
+	 * @apiNote http://localhost:3000/service/map
+	 * @response application/json
+	 */
+	@GetMapping(value = "/map")
 	public ResponseEntity<Object> getHashMapService(@RequestParam("value") String value){
 		System.out.println("MainController.java, getHashMapService()");
 		Map<String,Object> res = mainService.getDataMapService(value);
 		return ResponseEntity.status(HttpStatus.OK).body(res);
 	}
 	
+	/**
+	 * @apiNote http://localhost:3000/service/cal
+	 * @response application/json
+	 */
 	@PostMapping(value = "/cal")
 	public ResponseEntity<Object> getCalService(@RequestBody Map<String,Object> body) {
 		int valA = Integer.parseInt(body.get("valA").toString());

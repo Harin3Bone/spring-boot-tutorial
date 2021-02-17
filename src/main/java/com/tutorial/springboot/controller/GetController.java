@@ -19,6 +19,7 @@ public class GetController {
 
 	/**
 	 * @apiNote http://localhost:3000/simple
+	 * @response text/plain
 	 * */
 	@GetMapping(value = "/simple")
 	public ResponseEntity<Object> getMapping() {
@@ -28,6 +29,7 @@ public class GetController {
 
 	/**
 	 * @apiNote http://localhost:3000/path/data
+	 * @response text/plain
 	 * */
 	@GetMapping(value = "/path/{path}")
 	public ResponseEntity<Object> getMappingWithPath(@PathVariable(name = "path") String pathParam) {
@@ -38,6 +40,7 @@ public class GetController {
 
 	/**
 	 * @apiNote http://localhost:3000/query?query=123
+	 * @response text/plain
 	 * */
 	@GetMapping(value = "query")
 	public ResponseEntity<Object> getMappingWithQuery(@RequestParam(name = "query") String queryParam) {
@@ -48,7 +51,8 @@ public class GetController {
 
 	/**
 	 * @apiNote http://localhost:3000/header 
-	 * @hidden header 
+	 * @header header
+	 * @response text/plain 
 	 * */
 	@GetMapping(value = "header")
 	public ResponseEntity<Object> getMappingWithHeader(@RequestHeader(name = "header") String requestHeader) {

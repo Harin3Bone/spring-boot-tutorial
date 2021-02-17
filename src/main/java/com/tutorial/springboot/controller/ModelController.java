@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tutorial.springboot.model.BasicResModel;
 import com.tutorial.springboot.model.LombokResModel;
+import com.tutorial.springboot.model.TemplateResModel;
 
 @RestController
 @RequestMapping(value = "/model")
@@ -37,4 +38,30 @@ public class ModelController {
 		LombokResModel res = new LombokResModel(message, variable);
 		return ResponseEntity.status(HttpStatus.OK).body(res);
 	}
+	
+	/**
+	 * @apiNote http://localhost:3000/model/template/v1/...
+	 * @response application/json
+	 */
+	@GetMapping(value = "/template/v1/{variable}")
+	public ResponseEntity<Object> reqTemplateResponse(@PathVariable("variable") String variable) {
+		String message = "ServiceController.java, reqTemplateResponse() - ResponseEntity";
+		HttpStatus status = HttpStatus.OK;
+		System.out.println(message);
+		TemplateResModel res = new TemplateResModel(status,message, variable);
+		return ResponseEntity.status(status).body(res);
+	}
+	
+	/**
+	 * @apiNote http://localhost:3000/model/template/v2/...
+	 * @response application/json
+	 */
+	@GetMapping(value = "/template/v2/{variable}")
+	public TemplateResModel reqTemplateResponseAnother(@PathVariable("variable") String variable) {
+		String message = "ServiceController.java, reqTemplateResponse() - TemplateResModel";
+		HttpStatus status = HttpStatus.OK;
+		System.out.println(message);
+		return new TemplateResModel(status,message, variable);
+	}
+
 }

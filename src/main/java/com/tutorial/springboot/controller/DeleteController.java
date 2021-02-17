@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Harin Thananam
  * @since 17 FEB 2021
  * @category DELETE Example
- * */
+ */
 
 @RestController
 public class DeleteController {
@@ -20,17 +20,17 @@ public class DeleteController {
 	 * @response text/plain
 	 */
 	@DeleteMapping(value = "/simple")
-	public ResponseEntity<Object> deleteMapping(){
+	public ResponseEntity<Object> deleteMapping() {
 		System.out.println("DeleteMapping success");
 		return ResponseEntity.status(HttpStatus.OK).body("DeleteMapping success");
 	}
-	
+
 	/**
 	 * @apiNote http://localhost:3000/simple?data=123
 	 * @response text/plain
 	 */
-	@DeleteMapping(value = "/path",params = "data")
-	public ResponseEntity<Object> deleteMappingWithParam(@RequestParam("data") String data){
+	@DeleteMapping(value = "/path", params = "data")
+	public ResponseEntity<Object> deleteMappingWithParam(@RequestParam("data") String data) {
 		System.out.println("DeleteMapping with Param success");
 		return ResponseEntity.status(HttpStatus.OK).body("DeleteMapping with Param success, data= " + data);
 	}

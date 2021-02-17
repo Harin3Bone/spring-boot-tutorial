@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Harin Thananam
  * @since 17 FEB 2021
  * @category POST Example
- * */
+ */
 
 @RestController
 public class PostController {
@@ -22,7 +22,7 @@ public class PostController {
 	/**
 	 * @apiNote http://localhost:3000/simple
 	 * @response text/plain
-	 * */
+	 */
 	@PostMapping(value = "/simple")
 	public ResponseEntity<Object> postMapping() {
 		System.out.println("PostMapping success");
@@ -33,7 +33,7 @@ public class PostController {
 	 * @apiNote http://localhost:3000/body/obj
 	 * @body application/json {}
 	 * @response text/plain
-	 * */
+	 */
 	@PostMapping(value = "/body/obj")
 	public ResponseEntity<Object> postMappingWithObj(@RequestBody Map<String, Object> body) {
 		System.out.println("PostMapping with JSONObject");
@@ -44,7 +44,7 @@ public class PostController {
 	 * @apiNote http://localhost:3000/body/arr
 	 * @body application/json []
 	 * @response text/plain
-	 * */
+	 */
 	@PostMapping(value = "/body/arr")
 	public ResponseEntity<Object> postMappingWithArr(@RequestBody List<Object> body) {
 		System.out.println("PostMapping with JSONArray");
@@ -55,7 +55,7 @@ public class PostController {
 	 * @apiNote http://localhost:3000/consumes
 	 * @body application/json {}
 	 * @response text/plain
-	 * */
+	 */
 	@PostMapping(value = "/consumes", consumes = "application/json")
 	public ResponseEntity<Object> postMappingByConsume(@RequestBody Map<String, Object> body) {
 		System.out.println("PostMapping with Consumes application/json");
@@ -66,22 +66,10 @@ public class PostController {
 	 * @apiNote http://localhost:3000/produces
 	 * @body application/json {}
 	 * @response text/plain
-	 * */
+	 */
 	@PostMapping(value = "/produces", produces = "application/json")
 	public ResponseEntity<Object> postMappingByProduce(@RequestBody Map<String, Object> body) {
 		System.out.println("PostMapping with Produces application/json");
 		return ResponseEntity.status(HttpStatus.CREATED).body("PostMapping with Produces application/json");
-	}
-	
-	@PostMapping(value = "/consumes/another", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Object> postMappingByConsumeAnotherWay(@RequestBody Map<String, Object> body) {
-		System.out.println("PostMapping with Consumes MediaType.APPLICATION_JSON_VALUE");
-		return ResponseEntity.status(HttpStatus.CREATED).body("PostMapping with Consumes MediaType.APPLICATION_JSON_VALUE");
-	}
-	
-	@PostMapping(value = "/produces/another", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Object> postMappingByProduceAnotherWay(@RequestBody Map<String, Object> body) {
-		System.out.println("PostMapping with Produces MediaType.APPLICATION_JSON_VALUE");
-		return ResponseEntity.status(HttpStatus.CREATED).body("PostMapping with Produces MediaType.APPLICATION_JSON_VALUE");
 	}
 }

@@ -6,6 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * @author Harin Thananam
+ * @since 17 FEB 2021
+ * @category RequestMapping Example
+ */
+
 @RestController
 public class RequestController {
 

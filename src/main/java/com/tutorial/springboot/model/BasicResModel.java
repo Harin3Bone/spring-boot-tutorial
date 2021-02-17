@@ -2,6 +2,12 @@ package com.tutorial.springboot.model;
 
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * @author Harin Thananam
+ * @since 17 FEB 2021
+ * @category Part of ModelController
+ */
+
 @ResponseBody
 public class BasicResModel {
 

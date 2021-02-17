@@ -11,6 +11,12 @@ import com.tutorial.springboot.model.BasicResModel;
 import com.tutorial.springboot.model.LombokResModel;
 import com.tutorial.springboot.model.TemplateResModel;
 
+/**
+ * @author Harin Thananam
+ * @since 17 FEB 2021
+ * @category Model Example
+ */
+
 @RestController
 @RequestMapping(value = "/model")
 public class ModelController {

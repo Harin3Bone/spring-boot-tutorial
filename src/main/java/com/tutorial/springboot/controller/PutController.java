@@ -43,7 +43,7 @@ public class PutController {
 	 * @apiNote http://localhost:3000/consumes/another
 	 * @body application/json {}
 	 */
-	@PutMapping(value = "/consumes/another", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value = "/consumes", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> putMappingByConsumeAnotherWay(@RequestBody Map<String, Object> body) {
 		System.out.println("PutMapping with Consumes MediaType.APPLICATION_JSON_VALUE");
 		return ResponseEntity.status(HttpStatus.CREATED)
@@ -55,7 +55,7 @@ public class PutController {
 	 * @body application/json {}
 	 * @response application/json
 	 */
-	@PutMapping(value = "/produces/another", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value = "/produces", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> putMappingByProduceAnotherWay(@RequestBody Map<String, Object> body) {
 		System.out.println("PutMapping with Produces MediaType.APPLICATION_JSON_VALUE");
 		return ResponseEntity.status(HttpStatus.CREATED)

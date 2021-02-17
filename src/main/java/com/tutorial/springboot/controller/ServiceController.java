@@ -16,7 +16,7 @@ import com.tutorial.springboot.service.MainService;
 
 @RestController
 @RequestMapping(value = "/service")
-public class MainController {
+public class ServiceController {
 
 	@Autowired
 	public MainService mainService;

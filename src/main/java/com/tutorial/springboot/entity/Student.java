@@ -17,14 +17,17 @@ public class Student {
 	private Long id;
 
 	private String name;
-	
-	private String skill;
+
+	private String language;
+
+	private String framework;
 
 	protected Student() {
 	}
 
-	public Student(String quirk, String name) {
+	public Student(String name, String language, String framework) {
 		this.name = name;
-		this.skill = quirk;
+		this.language = language;
+		this.framework = framework;
 	}
 }

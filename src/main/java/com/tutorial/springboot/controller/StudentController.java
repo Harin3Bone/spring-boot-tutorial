@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,7 +51,7 @@ public class StudentController {
 		return ResponseEntity.status(status).body(res);
 	}
 
-	@PostMapping(value = "/student")
+	@PostMapping(value = "/student", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> saveStudent(@RequestBody Map<String, Object> body) {
 		StudentEntity data = studentService.saveStudent(body);
 		String message = "Create student success";
@@ -60,7 +61,7 @@ public class StudentController {
 		return ResponseEntity.status(status).body(res);
 	}
 
-	@PostMapping(value = "/students")
+	@PostMapping(value = "/students", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> saveStudentList(@RequestBody List<Map<String, Object>> body) {
 		List<StudentEntity> data = studentService.saveStudentList(body);
 		String message = "Create student success " + data.size() + " row(s)";
@@ -70,7 +71,7 @@ public class StudentController {
 		return ResponseEntity.status(status).body(res);
 	}
 
-	@PutMapping(value = "/student/{id}")
+	@PutMapping(value = "/student/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> updateStudentById(@PathVariable("id") long id,
 			@RequestBody Map<String, Object> body) {
 		StudentEntity data = studentService.updateStudent(id, body);

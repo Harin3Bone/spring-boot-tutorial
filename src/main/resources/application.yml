@@ -3,11 +3,15 @@ server:
   
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb   
+    url: jdbc:h2:mem:test   
     driver-class-name: org.h2.Driver
     username: sa
     password: 
-  jpa:    database-platform: org.hibernate.dialect.H2Dialect
+    initialization-mode: always
+  jpa:
+    hibernate:      ddl-auto: update
+    show-sql: false    database-platform: org.hibernate.dialect.H2Dialect      
   h2:    console:      enabled: true    
       path: /db-console
       settings:        web-allow-others: true
+        

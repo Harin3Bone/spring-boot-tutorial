@@ -26,39 +26,40 @@ public class ServiceController {
 
 	@Autowired
 	public MainService mainService;
-	
+
 	/**
 	 * @apiNote http://localhost:3000/service/simple
 	 * @response text/plain
 	 */
 	@GetMapping(value = "/simple")
-	public ResponseEntity<Object> getSimpleService(){
+	public ResponseEntity<Object> getSimpleService() {
 		System.out.println("MainController.java, getSimpleService()");
 		String res = mainService.getDataService();
 		return ResponseEntity.status(HttpStatus.OK).body(res);
 	}
-	
+
 	/**
 	 * @apiNote http://localhost:3000/service/map
 	 * @response application/json
 	 */
 	@GetMapping(value = "/map")
-	public ResponseEntity<Object> getHashMapService(@RequestParam("value") String value){
+	public ResponseEntity<Object> getHashMapService(@RequestParam("value") String value) {
 		System.out.println("MainController.java, getHashMapService()");
-		Map<String,Object> res = mainService.getDataMapService(value);
+		Map<String, Object> res = mainService.getDataMapService(value);
 		return ResponseEntity.status(HttpStatus.OK).body(res);
 	}
-	
+
 	/**
 	 * @apiNote http://localhost:3000/service/cal
 	 * @response application/json
 	 */
 	@PostMapping(value = "/cal")
-	public ResponseEntity<Object> getCalService(@RequestBody Map<String,Object> body) {
+	public ResponseEntity<Object> getCalService(@RequestBody Map<String, Object> body) {
 		int valA = Integer.parseInt(body.get("valA").toString());
 		int valB = Integer.parseInt(body.get("valA").toString());
-		
-		Map<String,Object> res = mainService.getCalService(valA, valB);
+
+		Map<String, Object> res = mainService.getCalService(valA, valB);
 		return ResponseEntity.status(HttpStatus.OK).body(res);
 	}
+
 }

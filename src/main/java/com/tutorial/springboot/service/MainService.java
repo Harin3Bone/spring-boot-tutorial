@@ -5,6 +5,12 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+/**
+ * @author Harin Thananam
+ * @since 17 FEB 2021
+ * @category Part of ServiceController
+ */
+
 @Service
 public class MainService {
 

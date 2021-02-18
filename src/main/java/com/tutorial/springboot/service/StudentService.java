@@ -46,5 +46,19 @@ public class StudentService {
 		}
 		return data;
 	}
+	
+	public StudentEntity updateStudent(long id, Map<String,Object> body) {
+		String name = body.get("name").toString();
+		String language = body.get("language").toString();
+		String framework = body.get("framework").toString();
+		
+		StudentEntity student = studentRepository.findById(id).get();
+		student.setName(name);
+		student.setLanguage(language);
+		student.setFramework(framework);
+		student = studentRepository.save(student);
+		
+		return student;
+	}
 
 }

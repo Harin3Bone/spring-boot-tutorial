@@ -48,4 +48,13 @@ public class StudentController {
 		TemplateResModel res = new TemplateResModel(HttpStatus.CREATED,message,data);
 		return ResponseEntity.status(HttpStatus.CREATED).body(res);
 	}
+	
+	@PostMapping(value = "/students")
+	public ResponseEntity<Object> saveStudentList(@RequestBody List<Map<String,Object>> body){
+		List<StudentEntity> data = studentService.saveStudentList(body);
+		String message = "Create student success " + data.size() + " row(s)";
+		
+		TemplateResModel res = new TemplateResModel(HttpStatus.CREATED,message,data);
+		return ResponseEntity.status(HttpStatus.CREATED).body(res);
+	}
 }

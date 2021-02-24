@@ -14,4 +14,7 @@ spring:
   h2:    console:      enabled: true    
       path: /db-console
       settings:        web-allow-others: true
-        
+ 
+springdoc:  swagger-ui:    enabled: true
+    path: /api-console
+      

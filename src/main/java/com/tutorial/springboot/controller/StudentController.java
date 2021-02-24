@@ -31,8 +31,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
  * @author Harin Thananam
- * @since 18 FEB 2021
- * @category H2 Example
+ * @since 18 FEB 2021 + 24 FEB 2021
+ * @category H2 Example + OpenApi
  */
 
 @RestController
@@ -98,9 +98,13 @@ public class StudentController {
 		return ResponseEntity.status(status).body(res);
 	}
 
+	@Operation(summary = "Update once student")
+	@Parameters(value = { @Parameter(name = "id", description = "studend id", example = "1") })
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = TemplateResModel.class))) })
 	@PutMapping(value = "/student/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> updateStudentById(@PathVariable("id") long id,
-			@RequestBody Map<String, Object> body) {
+			@RequestBody(content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE), description = "Student data") Map<String, Object> body) {
 		StudentEntity data = studentService.updateStudent(id, body);
 		String message = "Update id " + data.getId() + " success";
 		HttpStatus status = HttpStatus.OK;
@@ -109,6 +113,10 @@ public class StudentController {
 		return ResponseEntity.status(status).body(res);
 	}
 
+	@Operation(summary = "Delete once student")
+	@Parameters(value = { @Parameter(name = "id", description = "studend id", example = "5") })
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = TemplateResModel.class))) })
 	@DeleteMapping(value = "/student/{id}")
 	public ResponseEntity<Object> deleteStudentById(@PathVariable("id") long id) {
 		studentService.deleteStudent(id);

@@ -2,6 +2,7 @@ package com.tutorial.springboot.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,8 @@ import com.tutorial.springboot.model.BasicResModel;
 import com.tutorial.springboot.model.LombokResModel;
 import com.tutorial.springboot.model.TemplateResModel;
 
+import io.swagger.v3.oas.annotations.Hidden;
+
 /**
  * @author Harin Thananam
  * @since 17 FEB 2021
@@ -19,12 +22,11 @@ import com.tutorial.springboot.model.TemplateResModel;
 
 @RestController
 @RequestMapping(value = "/model")
+@CrossOrigin(allowedHeaders = "*", origins = "*")
+@Hidden
 public class ModelController {
 
-	/**
-	 * @apiNote http://localhost:3000/model/basic/...
-	 * @response application/json
-	 */
+
 	@GetMapping(value = "/basic/{variable}")
 	public ResponseEntity<Object> reqBasicResponse(@PathVariable("variable") String variable) {
 		String message = "ServiceController.java, reqBasicResponse()";
@@ -33,10 +35,6 @@ public class ModelController {
 		return ResponseEntity.status(HttpStatus.OK).body(res);
 	}
 	
-	/**
-	 * @apiNote http://localhost:3000/model/lombok/...
-	 * @response application/json
-	 */
 	@GetMapping(value = "/lombok/{variable}")
 	public ResponseEntity<Object> reqLombokResponse(@PathVariable("variable") String variable) {
 		String message = "ServiceController.java, reqLombokResponse()";
@@ -45,10 +43,6 @@ public class ModelController {
 		return ResponseEntity.status(HttpStatus.OK).body(res);
 	}
 	
-	/**
-	 * @apiNote http://localhost:3000/model/template/v1/...
-	 * @response application/json
-	 */
 	@GetMapping(value = "/template/v1/{variable}")
 	public ResponseEntity<Object> reqTemplateResponse(@PathVariable("variable") String variable) {
 		String message = "ServiceController.java, reqTemplateResponse() - ResponseEntity";
@@ -58,10 +52,6 @@ public class ModelController {
 		return ResponseEntity.status(status).body(res);
 	}
 	
-	/**
-	 * @apiNote http://localhost:3000/model/template/v2/...
-	 * @response application/json
-	 */
 	@GetMapping(value = "/template/v2/{variable}")
 	public TemplateResModel reqTemplateResponseAnother(@PathVariable("variable") String variable) {
 		String message = "ServiceController.java, reqTemplateResponse() - TemplateResModel";

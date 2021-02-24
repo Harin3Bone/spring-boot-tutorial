@@ -13,4 +13,4 @@ INSERT INTO student (name,language,framework) VALUES
 	('Pawanachai','JavaScript','Nuxt'),
 	('Kridsada','TypeScript','Nest'),
 	('Tham','Java',''),
-	('Aunyamanee','JavaScript','Angular');
+	('Watcharapol','Python','');

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author Harin Thananam
@@ -123,6 +124,17 @@ public class BasicController {
 	public ResponseEntity<Object> postMappingByProduce(@RequestBody Map<String, Object> body) {
 		System.out.println("PostMapping with Produces application/json");
 		return ResponseEntity.status(HttpStatus.CREATED).body("PostMapping with Produces application/json");
+	}
+	
+	/**
+	 * @apiNote http://localhost:3000/basic/multipart
+	 * @body multipart/form-data
+	 * @response multipart/form-data
+	 */
+	@PostMapping(value = "/multipart", produces = "multipart/form-data")
+	public ResponseEntity<Object> postMappingByMultipart(@RequestParam(name = "file") MultipartFile file) {
+		System.out.println("PostMapping with Produces multipart/form-data");
+		return ResponseEntity.status(HttpStatus.CREATED).body("PostMapping with Produces multipart/form-data");
 	}
 
 	/**

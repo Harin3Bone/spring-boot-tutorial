@@ -37,6 +37,7 @@ public class StudentService {
 		return data;
 	}
 	
+	@Deprecated
 	public List<StudentEntity> saveStudentList(List<Map<String, Object>> body) {
 		List<StudentEntity> data = new ArrayList<>();
 		for (Map<String,Object> obj : body) {
@@ -46,6 +47,15 @@ public class StudentService {
 		}
 		return data;
 	}
+	
+	public List<StudentEntity> saveStudentListv2(List<StudentEntity> body) {
+		List<StudentEntity> data = new ArrayList<>();
+		for (StudentEntity student : body) {
+			studentRepository.save(student);
+			data.add(student);
+		}
+		return data;
+	}	
 	
 	public StudentEntity updateStudent(long id, Map<String,Object> body) {
 		String name = body.get("name").toString();

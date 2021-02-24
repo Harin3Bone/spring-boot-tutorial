@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Hidden;
+
 /**
  * @author Harin Thananam
  * @since 17 FEB 2021
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(allowedHeaders = "*", origins = "*")
+@Hidden
 public class RequestController {
 
 	@RequestMapping(value = "/request", method = RequestMethod.GET)

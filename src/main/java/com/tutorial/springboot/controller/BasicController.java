@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import io.swagger.v3.oas.annotations.Hidden;
+
 /**
  * @author Harin Thananam
  * @since 17 FEB 2021
@@ -28,6 +30,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping(value = "/basic")
 @CrossOrigin(allowedHeaders = "*", origins = "*")
+@Hidden
 public class BasicController {
 
 	@GetMapping(value = "/simple")

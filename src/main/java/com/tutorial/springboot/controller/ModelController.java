@@ -12,6 +12,8 @@ import com.tutorial.springboot.model.BasicResModel;
 import com.tutorial.springboot.model.LombokResModel;
 import com.tutorial.springboot.model.TemplateResModel;
 
+import io.swagger.v3.oas.annotations.Hidden;
+
 /**
  * @author Harin Thananam
  * @since 17 FEB 2021
@@ -21,6 +23,7 @@ import com.tutorial.springboot.model.TemplateResModel;
 @RestController
 @RequestMapping(value = "/model")
 @CrossOrigin(allowedHeaders = "*", origins = "*")
+@Hidden
 public class ModelController {
 
 

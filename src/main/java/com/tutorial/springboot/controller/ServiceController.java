@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tutorial.springboot.service.MainService;
 
+import io.swagger.v3.oas.annotations.Hidden;
+
 /**
  * @author Harin Thananam
  * @since 17 FEB 2021
@@ -24,6 +26,7 @@ import com.tutorial.springboot.service.MainService;
 @RestController
 @RequestMapping(value = "/service")
 @CrossOrigin(allowedHeaders = "*", origins = "*")
+@Hidden
 public class ServiceController {
 
 	@Autowired

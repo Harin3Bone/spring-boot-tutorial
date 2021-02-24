@@ -20,6 +20,15 @@ import com.tutorial.springboot.entity.StudentEntity;
 import com.tutorial.springboot.model.TemplateResModel;
 import com.tutorial.springboot.service.StudentService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 /**
  * @author Harin Thananam
  * @since 18 FEB 2021
@@ -28,11 +37,18 @@ import com.tutorial.springboot.service.StudentService;
 
 @RestController
 @CrossOrigin(allowedHeaders = "*", origins = "*")
+@Tag(name = "Student")
 public class StudentController {
 
 	@Autowired
 	private StudentService studentService;
 
+	@Operation(summary = "Get all student")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200",content = @Content(
+					mediaType = MediaType.APPLICATION_JSON_VALUE,
+					schema = @Schema(implementation = TemplateResModel.class)))
+	})
 	@GetMapping(value = "/students")
 	public ResponseEntity<Object> getAllStudent() {
 		List<StudentEntity> data = studentService.getAllStudent();
@@ -43,6 +59,15 @@ public class StudentController {
 		return ResponseEntity.status(status).body(res);
 	}
 
+	@Operation(summary = "Get student by Id")
+	@Parameters(value = {
+			@Parameter(name = "id",required = true,allowEmptyValue = false,example = "1")
+	})
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200",content = @Content(
+					mediaType = MediaType.APPLICATION_JSON_VALUE,
+					schema = @Schema(implementation = TemplateResModel.class)))
+	})
 	@GetMapping(value = "/student/{id}")
 	public ResponseEntity<Object> getStudentById(@PathVariable("id") long id) {
 		StudentEntity data = studentService.getStudentById(id);

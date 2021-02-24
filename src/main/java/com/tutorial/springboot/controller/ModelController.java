@@ -21,10 +21,7 @@ import com.tutorial.springboot.model.TemplateResModel;
 @RequestMapping(value = "/model")
 public class ModelController {
 
-	/**
-	 * @apiNote http://localhost:3000/model/basic/...
-	 * @response application/json
-	 */
+
 	@GetMapping(value = "/basic/{variable}")
 	public ResponseEntity<Object> reqBasicResponse(@PathVariable("variable") String variable) {
 		String message = "ServiceController.java, reqBasicResponse()";
@@ -33,10 +30,6 @@ public class ModelController {
 		return ResponseEntity.status(HttpStatus.OK).body(res);
 	}
 	
-	/**
-	 * @apiNote http://localhost:3000/model/lombok/...
-	 * @response application/json
-	 */
 	@GetMapping(value = "/lombok/{variable}")
 	public ResponseEntity<Object> reqLombokResponse(@PathVariable("variable") String variable) {
 		String message = "ServiceController.java, reqLombokResponse()";
@@ -45,10 +38,6 @@ public class ModelController {
 		return ResponseEntity.status(HttpStatus.OK).body(res);
 	}
 	
-	/**
-	 * @apiNote http://localhost:3000/model/template/v1/...
-	 * @response application/json
-	 */
 	@GetMapping(value = "/template/v1/{variable}")
 	public ResponseEntity<Object> reqTemplateResponse(@PathVariable("variable") String variable) {
 		String message = "ServiceController.java, reqTemplateResponse() - ResponseEntity";
@@ -58,10 +47,6 @@ public class ModelController {
 		return ResponseEntity.status(status).body(res);
 	}
 	
-	/**
-	 * @apiNote http://localhost:3000/model/template/v2/...
-	 * @response application/json
-	 */
 	@GetMapping(value = "/template/v2/{variable}")
 	public TemplateResModel reqTemplateResponseAnother(@PathVariable("variable") String variable) {
 		String message = "ServiceController.java, reqTemplateResponse() - TemplateResModel";

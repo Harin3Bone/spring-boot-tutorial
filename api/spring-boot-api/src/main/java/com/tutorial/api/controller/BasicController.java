@@ -76,7 +76,7 @@ public class BasicController {
 	}
 	
 	@PutMapping(value = "")
-	public ResponseEntity<Object> putMapping(@RequestBody List<Map<String,Object>> body){
+	public ResponseEntity<Object> putMapping(@RequestBody Map<String,Object> body){
 		return ResponseEntity.status(HttpStatus.OK).body("PostMapping, JSONArray= " + body.toString());
 	}
 	

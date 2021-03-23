@@ -29,7 +29,7 @@ public class UserEntity {
 	@Column(name = "framework", length = 100, nullable = true)
 	private String framework;
 
-	protected UserEntity() {
+	public UserEntity() {
 	}
 
 	public UserEntity(String name, String language, String framework) {

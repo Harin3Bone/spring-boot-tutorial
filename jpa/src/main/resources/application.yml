@@ -1,0 +1,20 @@
+server:
+  port: 3002
+  servlet:    context-path: /tutorial
+
+spring:  datasource:
+    url:     username: sa 
+    password:
+    driver-class-name:
+    initialization-mode: always  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    database-platform: org.hibernate.dialect.H2Dialect 
+  h2:
+    console:
+      enabled: true    
+      path: /db-console
+      settings:
+        web-allow-others: true

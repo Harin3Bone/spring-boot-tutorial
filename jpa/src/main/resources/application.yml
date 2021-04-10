@@ -3,9 +3,9 @@ server:
   servlet:    context-path: /tutorial
 
 spring:  datasource:
-    url:     username: sa 
+    url: jdbc:h2:mem:test    username: sa 
     password:
-    driver-class-name:
+    driver-class-name: org.h2.Driver
     initialization-mode: always  
   jpa:
     hibernate:

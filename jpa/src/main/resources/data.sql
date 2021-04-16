@@ -8,8 +8,8 @@ CREATE TABLE Character (
 	level int 	
 );
 
-INSERT INTO Character (name,class,label,level) VALUES 
-('Zchwarzer','Elementalist','the Orphanage Mage',9),
-('Zchperkey','Necromancer','the Apprentice Witch',2),
-('Zchmirler','Warrior','the Blood Thirster',5),
-('Zchfushta','Ranger','the Hawke Eye',7);
+INSERT INTO Character (id,name,class,label,level) VALUES 
+(1,'Zchwarzer','Elementalist','the Orphanage Mage',9),
+(2,'Zchperkey','Necromancer','the Apprentice Witch',2),
+(3,'Zchmirler','Warrior','the Blood Thirster',5),
+(4,'Zchfushta','Ranger','the Hawke Eye',7);

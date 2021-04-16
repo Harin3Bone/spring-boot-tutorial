@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.sun.istack.NotNull;
+
 import lombok.Data;
 
 @Entity
@@ -15,14 +17,17 @@ import lombok.Data;
 public class CharaEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
+	@NotNull
 	private long id;
 	
 	@Column(name = "name",unique = true)
+	@NotNull
 	private String name;
 	
 	@Column(name = "class")
+	@NotNull
 	private String clss;
 	
 	@Column(name = "label")

@@ -1,1 +1,18 @@
+server:
+  port: 3003
+  servlet:
+    context-path: /tutorial
 
+spring:
+  datasource:
+    url: jdbc:h2:mem:test
+    username: sa 
+    password:
+    driver-class-name: org.h2.Driver
+    initialization-mode: always
+  h2:
+    console:
+      enabled: true    
+      path: /db-console
+      settings:
+        web-allow-others: true

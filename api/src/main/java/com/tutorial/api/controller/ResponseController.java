@@ -1,5 +1,6 @@
 package com.tutorial.api.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.springframework.http.HttpStatus;
@@ -34,5 +35,14 @@ public class ResponseController {
 	@ResponseStatus(code = HttpStatus.OK)
 	public ResponseModel returnJsonWithoutEntity() {
 		return new ResponseModel("type3");
+	}
+	
+	@GetMapping(value = "/type4")
+	public ResponseEntity<Object> returnJsonWithArray() {
+		var res = new ArrayList<Integer>();
+		res.add(1);
+		res.add(2);
+		res.add(3);
+		return ResponseEntity.status(HttpStatus.OK).body(res);
 	}
 }

@@ -1,6 +1,6 @@
 version: '3.8'
 
-services: 
+services:     
     tutorial-api:
         build: 
             context: ./api
@@ -17,9 +17,86 @@ services:
             - tutorial
         environment: 
             TZ: "Asia/Bangkok"
+    
+    tutorial-h2:
+        build: 
+            context: ./h2
+            args: 
+                jar: ./target/tutorial-h2.jar
+            dockerfile: Dockerfile
+        image: tutorial-h2:2.2.0
+        container_name: tutorial-h2
+        ports: 
+            - "3001:3001"
+        volumes: 
+            - h2:/tmp
+        networks: 
+            - tutorial
+        environment: 
+            TZ: "Asia/Bangkok"
+
+    tutorial-jpa:
+        build: 
+            context: ./jpa
+            args: 
+                jar: ./target/tutorial-jpa.jar
+            dockerfile: Dockerfile
+        image: tutorial-jpa:2.2.0
+        container_name: tutorial-jpa
+        ports: 
+            - "3002:3002"
+        volumes: 
+            - jpa:/tmp
+        networks: 
+            - tutorial
+        environment: 
+            TZ: "Asia/Bangkok"
+
+    tutorial-structure:
+        build: 
+            context: ./structure
+            args: 
+                jar: ./target/tutorial-structure.jar
+            dockerfile: Dockerfile
+        image: tutorial-structure:2.2.0
+        container_name: tutorial-structure
+        ports: 
+            - "3003:3003"
+        volumes: 
+            - structure:/tmp
+        networks: 
+            - tutorial
+        environment: 
+            TZ: "Asia/Bangkok"
+
+    tutorial-jdbc:
+        build: 
+            context: ./jdbc
+            args: 
+                jar: ./target/tutorial-jdbc.jar
+            dockerfile: Dockerfile
+        image: tutorial-jdbc:2.2.0
+        container_name: tutorial-jdbc
+        ports: 
+            - "3004:3004"
+        volumes: 
+            - jdbc:/tmp
+        networks: 
+            - tutorial
+        environment: 
+            TZ: "Asia/Bangkok"
+    
 
 volumes: 
     api:
+        driver: local
+    h2:
+        driver: local
+    jpa:
+        driver: local
+    structure:
+        driver: local
+    jdbc:
         driver: local
 
 networks: 

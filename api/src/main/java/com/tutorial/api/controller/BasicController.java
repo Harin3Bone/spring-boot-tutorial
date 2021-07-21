@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.tutorial.api.entity.RequestModel;
+
 @RestController
 @RequestMapping(value = "/basic")
 @CrossOrigin(allowedHeaders = "*", origins = "*")
@@ -53,6 +55,11 @@ public class BasicController {
 	@PostMapping(value = "/object")
 	public ResponseEntity<Object> postMappingObj(@RequestBody Map<String,Object> body){
 		return ResponseEntity.status(HttpStatus.OK).body("PostMapping, JSONObject= " + body.toString());
+	}
+	
+	@PostMapping(value = "/body")
+	public ResponseEntity<Object> postMappingObj(@RequestBody RequestModel body){
+		return ResponseEntity.status(HttpStatus.OK).body("PostMapping, RequestModel= " + body.toString());
 	}
 	
 	@PostMapping(value = "/array")

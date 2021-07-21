@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tutorial.structure.service.MainService;
+import com.tutorial.structure.impl.MainImpl;
 
 @RestController
 @CrossOrigin(allowedHeaders = "*", origins = "*")
 public class MainController {
 	
 	@Autowired
-	private MainService mainService;
+	private MainImpl mainService;
 
 	@RequestMapping(value = "main")
 	public ResponseEntity<Object> mainApi(){

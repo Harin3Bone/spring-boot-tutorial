@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tutorial.api.entity.ResponseModel;
 
 @RestController
-@RequestMapping(value = "/json")
+@RequestMapping(value = "/res")
 @CrossOrigin(allowedHeaders = "*", origins = "*")
 public class ResponseController {
 

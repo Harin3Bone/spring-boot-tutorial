@@ -47,6 +47,15 @@
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 4,\r\n    \"name\": \"Minamonoto Raikou\",\r\n    \"classes\": \"Berserker\",\r\n    \"rarity\": \"SSR\",\r\n    \"myth\": \"Mistress of War\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "{{host}}/tutorial/servant",
 					"host": [
@@ -65,6 +74,15 @@
 			"request": {
 				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Miyamoto Musashi\",\r\n    \"classes\": \"Saber\",\r\n    \"rarity\": \"SSR\",\r\n    \"myth\": \"Dual Wield Samurai\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "{{host}}/tutorial/servant",
 					"host": [

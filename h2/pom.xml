@@ -53,8 +53,11 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
+	<packaging>jar</packaging>
 
 	<build>
+		<finalName>tutorial-h2</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

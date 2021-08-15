@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "b4c35f43-542e-42c2-9495-a1b2398aec2c",
+		"name": "JDBC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all servant",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/tutorial/servant",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"tutorial",
+						"servant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get servant by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/tutorial/servant/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"tutorial",
+						"servant",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create once servant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 4,\r\n    \"name\": \"Minamonoto Raikou\",\r\n    \"classes\": \"Berserker\",\r\n    \"rarity\": \"SSR\",\r\n    \"myth\": \"Mistress of War\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/tutorial/servant",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"tutorial",
+						"servant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update once servant",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Miyamoto Musashi\",\r\n    \"classes\": \"Saber\",\r\n    \"rarity\": \"SSR\",\r\n    \"myth\": \"Dual Wield Samurai\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/tutorial/servant",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"tutorial",
+						"servant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete all servant",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/tutorial/servant",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"tutorial",
+						"servant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete servant by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/tutorial/servant/4",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"tutorial",
+						"servant",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:3004"
+		}
+	]
+}

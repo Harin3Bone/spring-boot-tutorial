@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tutorial.jpa.dto.CharaDTO;
 import com.tutorial.jpa.entity.CharaEntity;
-import com.tutorial.jpa.service.CharaService;
+import com.tutorial.jpa.impl.CharaServiceImpl;
 
 @RestController
 @RequestMapping(value = "/chara")
@@ -24,7 +25,7 @@ import com.tutorial.jpa.service.CharaService;
 public class CharaController {
 
 	@Autowired
-	private CharaService charaService;
+	private CharaServiceImpl charaService;
 
 	@GetMapping(value = "")
 	public ResponseEntity<Object> getAllChara() {
@@ -39,25 +40,27 @@ public class CharaController {
 	}
 
 	@PostMapping(value = "")
-	public ResponseEntity<Object> createOnceChara(@RequestBody() CharaEntity body) {
-		charaService.createChara(body);
-		return ResponseEntity.status(HttpStatus.CREATED).body(body);
+	public ResponseEntity<Object> createOnceChara(@RequestBody CharaDTO body) {
+		CharaEntity model = new CharaEntity(body);
+		charaService.createChara(model);
+		return ResponseEntity.status(HttpStatus.CREATED).body("created success");
 	}
 
 	@PutMapping(value = "")
-	public ResponseEntity<Object> updateOnceChara(@RequestBody() CharaEntity body) {
-		charaService.updateChara(body);
-		return ResponseEntity.status(HttpStatus.CREATED).body(body);
-	}	
-	
+	public ResponseEntity<Object> updateOnceChara(@RequestBody CharaDTO body) {
+		CharaEntity model = new CharaEntity(body.getId(),body);
+		charaService.updateChara(model);
+		return ResponseEntity.status(HttpStatus.CREATED).body("update success");
+	}
+
 	@DeleteMapping(value = "")
-	public ResponseEntity<Object> deleteAllChara(){
+	public ResponseEntity<Object> deleteAllChara() {
 		charaService.deleteAllChara();
 		return ResponseEntity.status(HttpStatus.OK).body("Delete all character success.");
 	}
-	
+
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Object> deleteOnceChara(@PathVariable(name = "id") long id){
+	public ResponseEntity<Object> deleteOnceChara(@PathVariable(name = "id") long id) {
 		charaService.deleteCharaById(id);
 		return ResponseEntity.status(HttpStatus.OK).body("Delete character id " + id + " success.");
 	}

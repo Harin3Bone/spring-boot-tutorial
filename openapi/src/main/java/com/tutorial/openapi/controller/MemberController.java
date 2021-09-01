@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,10 +49,20 @@ public class MemberController {
 
 	@Operation(summary = "Get Member by ID [PATH]")
 	@Parameters(value = { @Parameter(name = "id", description = "Member ID", example = "1", in = ParameterIn.PATH) })
-	@GetMapping(value = "/{id}")
+	@GetMapping(value = "/path/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
 	@ResponseBody
-	public ResponseUtil getAllMemberById(@PathVariable(name = "id") long id) {
+	public ResponseUtil getAllMemberByIdPath(@PathVariable(name = "id") long id) {
+		var res = memberService.getMemberById(id);
+		return new ResponseUtil("Get all member success.", res);
+	}
+	
+	@Operation(summary = "Get Member by ID [QUERY]")
+	@Parameters(value = { @Parameter(name = "id", description = "Member ID", example = "1", in = ParameterIn.QUERY) })
+	@GetMapping(value = "/query")
+	@ResponseStatus(code = HttpStatus.OK)
+	@ResponseBody
+	public ResponseUtil getAllMemberByIdQuery(@RequestParam(name = "id") long id) {
 		var res = memberService.getMemberById(id);
 		return new ResponseUtil("Get all member success.", res);
 	}

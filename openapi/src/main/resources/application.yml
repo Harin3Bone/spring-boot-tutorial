@@ -26,6 +26,7 @@ springdoc:
   swagger-ui:
     enabled: true
     path: /swagger-ui
+    operations-sorter: method
   default-consumes-media-type: application/json
   default-produces-media-type: application/json
   model-and-view-allowed: true    

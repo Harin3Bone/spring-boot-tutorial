@@ -24,6 +24,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "Member")
@@ -64,6 +66,11 @@ public class MemberController {
 	}
 
 	@Operation(summary = "Update member")
+	@io.swagger.v3.oas.annotations.parameters.RequestBody(
+			content = @Content(
+					mediaType = "application/json", 
+					examples = @ExampleObject(
+							value = "{\"id\": 1,\"name\": \"Harin\",\"job\": \"Fullstack Developer\",\"lang\": \"Kotlin\"}")))
 	@PutMapping(value = "")
 	@ResponseStatus(code = HttpStatus.OK)
 	@ResponseBody

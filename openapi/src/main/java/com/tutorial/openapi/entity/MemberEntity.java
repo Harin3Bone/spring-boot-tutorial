@@ -17,7 +17,9 @@ import lombok.Data;
 public class MemberEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	@NotNull
 	private long id;
 	
 	@Column(name = "name",unique = true)

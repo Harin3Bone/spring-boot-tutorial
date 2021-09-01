@@ -18,7 +18,6 @@ public class MemberServiceImpl implements MemberService {
 	MemberRepository memberRepo;
 
 	public List<MemberEntity> getAllMember() {
-		System.out.print(memberRepo.findAll());
 		return memberRepo.findAll();
 	}
 

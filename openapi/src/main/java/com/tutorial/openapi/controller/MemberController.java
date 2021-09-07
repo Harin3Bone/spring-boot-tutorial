@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,6 +31,7 @@ import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "Member")
@@ -52,6 +54,21 @@ public class MemberController {
 		return new ResponseUtil("Get all member success.", res);
 	}
 
+	@Operation(summary = "Get All Member [Authorization]", security = {
+			@SecurityRequirement(name = "Authorization")
+	})
+	@Parameters(value = {
+			@Parameter(name = "Authorization", description = "Authorization token", example = "Token", in = ParameterIn.HEADER) })
+	@GetMapping(value = "/auth")
+	@ResponseStatus(code = HttpStatus.OK)
+	@ApiResponses(value = {
+			@ApiResponse(content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseUtil.class))) })
+	@ResponseBody
+	public ResponseUtil getAllMemberWithAuthorize(@RequestHeader(name = "Authorization", required = true) String auth) {
+		var res = memberService.getAllMember();
+		return new ResponseUtil("Get all member success.", res);
+	}
+
 	@Operation(summary = "Get Member by ID [PATH]")
 	@Parameters(value = { @Parameter(name = "id", description = "Member ID", example = "1", in = ParameterIn.PATH) })
 	@GetMapping(value = "/path/{id}")
@@ -59,7 +76,7 @@ public class MemberController {
 	@ResponseBody
 	public ResponseUtil getAllMemberByIdPath(@PathVariable(name = "id") long id) {
 		var res = memberService.getMemberById(id);
-		return new ResponseUtil("Get all member success.", res);
+		return new ResponseUtil("Get member by id success.", res);
 	}
 
 	@Operation(summary = "Get Member by ID [QUERY]")
@@ -69,7 +86,7 @@ public class MemberController {
 	@ResponseBody
 	public ResponseUtil getAllMemberByIdQuery(@RequestParam(name = "id") long id) {
 		var res = memberService.getMemberById(id);
-		return new ResponseUtil("Get all member success.", res);
+		return new ResponseUtil("Get member by id success.", res);
 	}
 
 	@Operation(summary = "Create member")
@@ -101,4 +118,5 @@ public class MemberController {
 		memberService.deleteMemberById(id);
 		return new ResponseUtil("Delete member success.", new HashMap<String, String>());
 	}
+
 }

@@ -1,6 +1,8 @@
 server:
   port: 3005
+  forward-headers-strategy: framework
   servlet:    context-path: /tutorial
+  
     
 spring:  datasource:
     url: jdbc:h2:mem:test
@@ -29,4 +31,5 @@ springdoc:
     operations-sorter: method
   default-consumes-media-type: application/json
   default-produces-media-type: application/json
-  model-and-view-allowed: true    
+  model-and-view-allowed: true
+  show-actuator: false

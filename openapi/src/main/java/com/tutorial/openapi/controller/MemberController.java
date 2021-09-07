@@ -27,6 +27,9 @@ import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "Member")
@@ -41,6 +44,8 @@ public class MemberController {
 	@Operation(summary = "Get All Member")
 	@GetMapping(value = "")
 	@ResponseStatus(code = HttpStatus.OK)
+	@ApiResponses(value = {
+			@ApiResponse(content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseUtil.class))) })
 	@ResponseBody
 	public ResponseUtil getAllMember() {
 		var res = memberService.getAllMember();
@@ -56,7 +61,7 @@ public class MemberController {
 		var res = memberService.getMemberById(id);
 		return new ResponseUtil("Get all member success.", res);
 	}
-	
+
 	@Operation(summary = "Get Member by ID [QUERY]")
 	@Parameters(value = { @Parameter(name = "id", description = "Member ID", example = "1", in = ParameterIn.QUERY) })
 	@GetMapping(value = "/query")
@@ -77,11 +82,7 @@ public class MemberController {
 	}
 
 	@Operation(summary = "Update member")
-	@io.swagger.v3.oas.annotations.parameters.RequestBody(
-			content = @Content(
-					mediaType = "application/json", 
-					examples = @ExampleObject(
-							value = "{\"id\": 1,\"name\": \"Harin\",\"job\": \"Fullstack Developer\",\"lang\": \"Kotlin\"}")))
+	@io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json", examples = @ExampleObject(value = "{\"id\": 1,\"name\": \"Harin\",\"job\": \"Fullstack Developer\",\"lang\": \"Kotlin\"}")))
 	@PutMapping(value = "")
 	@ResponseStatus(code = HttpStatus.OK)
 	@ResponseBody

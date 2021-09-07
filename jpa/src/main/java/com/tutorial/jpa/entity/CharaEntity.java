@@ -8,11 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.sun.istack.NotNull;
+import com.tutorial.jpa.dto.CharaDTO;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "Character")
 public class CharaEntity {
 
@@ -35,4 +40,21 @@ public class CharaEntity {
 	
 	@Column(name = "level")
 	private int lv;
+	
+	public CharaEntity(CharaDTO dto) {
+		super();
+		this.name = dto.getName();
+		this.clss = dto.getClss();
+		this.label = dto.getLabel();
+		this.lv = dto.getLv();
+	}
+	
+	public CharaEntity(long id, CharaDTO dto) {
+		super();
+		this.id = id;
+		this.name = dto.getName();
+		this.clss = dto.getClss();
+		this.label = dto.getLabel();
+		this.lv = dto.getLv();
+	}
 }

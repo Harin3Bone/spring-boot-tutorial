@@ -1,0 +1,35 @@
+server:
+  port: 3005
+  forward-headers-strategy: framework
+  servlet:    context-path: /tutorial
+  
+    
+spring:  datasource:
+    url: jdbc:h2:mem:test
+    username: sa 
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    database-platform: org.hibernate.dialect.H2Dialect 
+  h2:
+    console:
+      enabled: true    
+      path: /db-console
+      settings:
+        web-allow-others: true  sql:    init:      mode: always
+    
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui
+    operations-sorter: method
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  model-and-view-allowed: true
+  show-actuator: false

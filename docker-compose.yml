@@ -7,7 +7,7 @@ services:
       args:
         jar: ./target/tutorial-api.jar
       dockerfile: Dockerfile
-    image: tutorial-api:${VERSION}
+    image: tutorial-api:${VERSION:-latest}
     container_name: tutorial-api
     ports:
       - "3000:3000"
@@ -24,7 +24,7 @@ services:
       args:
         jar: ./target/tutorial-h2.jar
       dockerfile: Dockerfile
-    image: tutorial-h2:${VERSION}
+    image: tutorial-h2:${VERSION:-latest}
     container_name: tutorial-h2
     ports:
       - "3001:3001"
@@ -41,7 +41,7 @@ services:
       args:
         jar: ./target/tutorial-jpa.jar
       dockerfile: Dockerfile
-    image: tutorial-jpa:${VERSION}
+    image: tutorial-jpa:${VERSION:-latest}
     container_name: tutorial-jpa
     ports:
       - "3002:3002"
@@ -58,7 +58,7 @@ services:
       args:
         jar: ./target/tutorial-structure.jar
       dockerfile: Dockerfile
-    image: tutorial-structure:${VERSION}
+    image: tutorial-structure:${VERSION:-latest}
     container_name: tutorial-structure
     ports:
       - "3003:3003"
@@ -75,7 +75,7 @@ services:
       args:
         jar: ./target/tutorial-jdbc.jar
       dockerfile: Dockerfile
-    image: tutorial-jdbc:${VERSION}
+    image: tutorial-jdbc:${VERSION:-latest}
     container_name: tutorial-jdbc
     ports:
       - "3004:3004"
@@ -92,7 +92,7 @@ services:
       args:
         jar: ./target/tutorial-openapi.jar
       dockerfile: Dockerfile
-    image: totorial-opanapi:${VERSION}
+    image: totorial-opanapi:${VERSION:-latest}
     container_name: tutorial-openapi
     ports:
       - "3005:3005"

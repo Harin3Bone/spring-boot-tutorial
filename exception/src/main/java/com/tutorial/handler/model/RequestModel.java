@@ -1,0 +1,18 @@
+package com.tutorial.handler.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class RequestModel {
+
+	private long id;
+	
+	private String name;
+	
+	private RequestItemModel model;
+
+}

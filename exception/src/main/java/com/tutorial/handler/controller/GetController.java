@@ -20,7 +20,7 @@ public class GetController {
 	@Autowired
 	MainService mainService;
 
-	@GetMapping(value = "")
+	@GetMapping(value = "/simple")
 	public ResponseModel reqGetApi() {
 		return new ResponseModel("Request GET [Simple]", "");
 	}

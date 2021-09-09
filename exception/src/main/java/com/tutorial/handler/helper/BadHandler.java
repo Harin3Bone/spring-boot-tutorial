@@ -11,11 +11,20 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.multipart.support.MissingServletRequestPartException;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import com.tutorial.handler.model.ResponseModel;
 
 @RestControllerAdvice
 public class BadHandler {
+	
+	@ExceptionHandler(NoHandlerFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseModel handleNoHandlerFound(NoHandlerFoundException e) {
+		var res = new HashMap<Integer, String>();
+		res.put(0, "API not found");
+		return new ResponseModel("NoHandlerFoundException", res);
+    }
 
 	@ExceptionHandler(value = MissingServletRequestParameterException.class)
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)

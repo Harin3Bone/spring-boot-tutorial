@@ -1,5 +1,9 @@
 package com.tutorial.handler.exception;
 
-public class CustomizeException {
+@SuppressWarnings("serial")
+public class CustomizeException extends RuntimeException {
 
+	public CustomizeException(String msg) {
+		super(msg);
+	}
 }

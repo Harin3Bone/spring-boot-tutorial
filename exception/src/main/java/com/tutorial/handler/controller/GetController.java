@@ -34,4 +34,5 @@ public class GetController {
 	public ResponseModel reqGetApiQuery(@RequestParam(name = "param", required = true) String param) {
 		return new ResponseModel("Request GET [Query]", param);
 	}
+
 }

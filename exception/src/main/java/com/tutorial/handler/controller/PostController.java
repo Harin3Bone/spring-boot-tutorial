@@ -1,8 +1,11 @@
 package com.tutorial.handler.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +21,7 @@ import com.tutorial.handler.service.MainService;
 @RestController
 @CrossOrigin(allowedHeaders = "*", origins = "*")
 @ResponseStatus(code = HttpStatus.CREATED)
+@Validated
 public class PostController {
 
 	@Autowired
@@ -29,7 +33,7 @@ public class PostController {
 	}
 
 	@PostMapping(value = "/json", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseModel reqPostJsonApi(@RequestBody RequestModel body) {
+	public ResponseModel reqPostJsonApi(@Valid @RequestBody RequestModel body) {
 		return new ResponseModel("Request POST [JSON]", body);
 	}
 

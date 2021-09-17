@@ -2,7 +2,11 @@ server:
   port: 3007
   servlet:    context-path: /tutorial
     
+spring:  main:    banner-mode: log
+    
 logging:  level:    '[com.tutorial.log.debug]': debug
     '[com.tutorial.log.trace]': trace
   file:    path: /
     name: server.log
+    max-size: 10MB
+    max-history: 7

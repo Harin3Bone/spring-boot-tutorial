@@ -1,0 +1,4 @@
+server:
+  port: 3008  servlet:    context-path: /tutorial
+
+logging:  level:    '[com.tutorial.validation]': debug

@@ -4,3 +4,5 @@ server:
     
 logging:  level:    '[com.tutorial.log.debug]': debug
     '[com.tutorial.log.trace]': trace
+  file:    path: /
+    name: server.log

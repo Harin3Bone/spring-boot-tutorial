@@ -1,0 +1,6 @@
+server:
+  port: 3007
+  servlet:    context-path: /tutorial
+    
+logging:  level:    '[com.tutorial.log.debug]': debug
+    '[com.tutorial.log.trace]': trace

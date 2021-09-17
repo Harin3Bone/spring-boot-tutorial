@@ -2,7 +2,8 @@ server:
   port: 3007
   servlet:    context-path: /tutorial
     
-spring:  main:    banner-mode: log
+spring:
+  banner:    location: banner.txt  main:    banner-mode: log
     
 logging:  level:    '[com.tutorial.log.debug]': debug
     '[com.tutorial.log.trace]': trace

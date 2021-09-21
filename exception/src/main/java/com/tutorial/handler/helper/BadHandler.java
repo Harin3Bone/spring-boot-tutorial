@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -73,6 +74,15 @@ public class BadHandler {
 
 		return new ResponseModel("MethodArgumentTypeMismatchException", res);
 	}
+	
+	@ExceptionHandler(value = HttpMessageNotReadableException.class)
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	public ResponseModel handleMessageNotReadable(HttpMessageNotReadableException e) {
+		var res = new HashMap<Integer, String>();
+		res.put(0, "Message receive '" + e.getHttpInputMessage() + "' are not readable");
+
+		return new ResponseModel("HttpMessageNotReadableException", res);
+	}
 
 	@ExceptionHandler(value = MethodArgumentNotValidException.class)
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
@@ -84,5 +94,7 @@ public class BadHandler {
 
 		return new ResponseModel("MissingServletRequestParameterException", res);
 	}
+	
+	
 
 }

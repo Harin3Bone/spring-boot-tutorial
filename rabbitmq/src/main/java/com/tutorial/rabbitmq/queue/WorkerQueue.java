@@ -17,4 +17,9 @@ public class WorkerQueue {
 	public Queue workerNumberQueue() {
 		return new Queue("primitive-number-queue", false);
 	}
+	
+	@Bean
+	public Queue workerReferenceQueue() {
+		return new Queue("primitive-reference-queue", false);
+	}
 }

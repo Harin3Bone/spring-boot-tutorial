@@ -32,4 +32,10 @@ public class WorkerController {
 		rabbitService.publishWorkerValueQueue(body.get("key"));
 		return ResponseEntity.status(HttpStatus.OK).body("Send worker queue [primitive] success.");
 	}
+	
+	@PostMapping(value = "/value/reference")
+	public ResponseEntity<Object> sendValueWorkerReferenceQueue(@RequestBody Map<String,Object> body){
+		rabbitService.publishWorkerReferenceQueue(body);
+		return ResponseEntity.status(HttpStatus.OK).body("Send worker queue [non-primitive] success.");
+	}
 }

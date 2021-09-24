@@ -1,5 +1,7 @@
 package com.tutorial.rabbitmq.impl;
 
+import java.util.Map;
+
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,5 +22,10 @@ public class RabbitImpl implements RabbitService {
 	@Override
 	public void publishWorkerValueQueue(int value) {
 		rabbitTemplate.convertAndSend("primitive-number-queue", value);
+	}
+
+	@Override
+	public void publishWorkerReferenceQueue(Map<String, Object> value) {
+		rabbitTemplate.convertAndSend("primitive-reference-queue", value);
 	}
 }

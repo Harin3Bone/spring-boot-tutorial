@@ -5,6 +5,8 @@ import java.util.Map;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.context.annotation.Configuration;
 
+import com.tutorial.rabbitmq.entity.TransactionEntity;
+
 import lombok.extern.log4j.Log4j2;
 
 @Configuration
@@ -21,8 +23,13 @@ public class WorkerListener {
 		log.info("workerNumberListener receive= " + in);
 	}
 	
-	@RabbitListener(queues = "primitive-reference-queue")
+	@RabbitListener(queues = "non-primitive-reference-queue")
 	public void workerReferenceListener(Map<String,Object> in) {
+		log.info("workerReferenceListener receive= " + in.toString());
+	}
+	
+	@RabbitListener(queues = "non-primitive-object-queue")
+	public void workerReferenceListener(TransactionEntity in) {
 		log.info("workerReferenceListener receive= " + in.toString());
 	}
 }

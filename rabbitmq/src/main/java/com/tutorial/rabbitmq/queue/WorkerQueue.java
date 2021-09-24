@@ -20,6 +20,11 @@ public class WorkerQueue {
 	
 	@Bean
 	public Queue workerReferenceQueue() {
-		return new Queue("primitive-reference-queue", false);
+		return new Queue("non-primitive-reference-queue", false);
+	}
+	
+	@Bean
+	public Queue workerObjectQueue() {
+		return new Queue("non-primitive-object-queue", false);
 	}
 }

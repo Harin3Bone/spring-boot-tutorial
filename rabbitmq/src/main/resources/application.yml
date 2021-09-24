@@ -1,4 +1,8 @@
 server:
   port: 3009
-  servlet:    context-path: /tutorial
+  servlet:    context-path: /tutorial/rabbitmq
     
+spring:  rabbitmq:    host: localhost
+    port: 5672
+    username: root
+    password: password

@@ -10,7 +10,7 @@ import com.tutorial.rabbitmq.entity.TransactionEntity;
 import com.tutorial.rabbitmq.service.RabbitService;
 
 @Service
-public class RabbitImpl implements RabbitService {
+public class WorkerImpl implements RabbitService {
 
 	@Autowired
 	RabbitTemplate rabbitTemplate;

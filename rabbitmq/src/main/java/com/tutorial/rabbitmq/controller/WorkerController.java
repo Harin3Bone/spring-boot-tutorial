@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tutorial.rabbitmq.entity.TransactionEntity;
-import com.tutorial.rabbitmq.impl.RabbitImpl;
+import com.tutorial.rabbitmq.impl.WorkerImpl;
 
 @RestController
 @RequestMapping(value = "/worker")
@@ -20,7 +20,7 @@ import com.tutorial.rabbitmq.impl.RabbitImpl;
 public class WorkerController {
 
 	@Autowired
-	RabbitImpl rabbitService;
+	WorkerImpl rabbitService;
 
 	@PostMapping(value = "/value/string")
 	public ResponseEntity<Object> sendValueWorkerStringQueue(@RequestBody Map<String, String> body) {

@@ -25,4 +25,10 @@ public class OverallHandler {
 	public ResponseEntity<Object> fileHandler() {
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("FILE_EXCEPTION.");
 	}
+
+	@ExceptionHandler(value = InvalidFileTypeException.class)
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	public ResponseEntity<Object> invalidFileHelper(InvalidFileTypeException e) {
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("NOT_IMAGE_EXCEPTION.");
+	}
 }

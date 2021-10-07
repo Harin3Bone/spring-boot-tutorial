@@ -7,8 +7,8 @@ import org.springframework.web.multipart.MultipartFile;
 public interface FileService {
 
 	void saveAllFile(MultipartFile file) throws FileSystemException;
-
-	void saveImgFile(MultipartFile file);
-
-	void saveMediaFile(MultipartFile file);
+	
+	void saveOnlyImageFile(MultipartFile file) throws FileSystemException;
+	
+	void saveWithFolder(MultipartFile file);
 }

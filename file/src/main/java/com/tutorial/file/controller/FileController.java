@@ -36,4 +36,14 @@ public class FileController {
 		log.info("uploadFile Finish.");
 		return ResponseEntity.ok("Upload " + file.getOriginalFilename());
 	}
+	
+	@PostMapping(value = "/img", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(code = HttpStatus.OK)
+	public ResponseEntity<Object> uploadImageFile(@RequestParam(name = "file") MultipartFile file)
+			throws FileSystemException {
+		log.info("uploadImageFile Begin.");
+		fileService.saveOnlyImageFile(file);
+		log.info("uploadImageFile Finish.");
+		return ResponseEntity.ok("Upload " + file.getOriginalFilename());
+	}
 }

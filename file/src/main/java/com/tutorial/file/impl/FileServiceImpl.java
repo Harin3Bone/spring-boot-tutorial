@@ -54,7 +54,7 @@ public class FileServiceImpl implements FileService {
 			log.error("saveOnlyImageFile class= FileAlreadyExistsException.");
 			log.error("saveOnlyImageFile message= " + e.getMessage());
 			throw e;
-		}  catch (InvalidFileTypeException e) {
+		} catch (InvalidFileTypeException e) {
 			log.error("saveOnlyImageFile class= InvalidFileTypeException.");
 			log.error("saveOnlyImageFile message= " + e.getMessage());
 			throw e;
@@ -65,7 +65,25 @@ public class FileServiceImpl implements FileService {
 	}
 
 	@Override
-	public void saveWithFolder(MultipartFile file) {
+	public void saveWithFolder(MultipartFile file) throws FileSystemException {
+		log.info("saveWithFolder Begin.");
 
+		try {
+			Path newPath = root.resolve("folder_" + System.currentTimeMillis());
+			Files.createDirectories(newPath);
+			Files.copy(file.getInputStream(), newPath.resolve(file.getOriginalFilename()));
+			log.info("saveWithFolder Finish.");
+		} catch (FileAlreadyExistsException e) {
+			log.error("saveWithFolder class= FileAlreadyExistsException.");
+			log.error("saveWithFolder message= " + e.getMessage());
+			throw e;
+		} catch (InvalidFileTypeException e) {
+			log.error("saveWithFolder class= InvalidFileTypeException.");
+			log.error("saveWithFolder message= " + e.getMessage());
+			throw e;
+		} catch (Exception e) {
+			log.error("saveWithFolder class= " + e.getClass());
+			log.error("saveWithFolder message= " + e.getMessage());
+		}
 	}
 }

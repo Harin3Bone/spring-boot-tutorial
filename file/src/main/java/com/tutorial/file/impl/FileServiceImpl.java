@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,8 +18,11 @@ import lombok.extern.log4j.Log4j2;
 @Service
 @Log4j2
 public class FileServiceImpl implements FileService {
+	
+	@Value("${config.path}")
+	private String configRoot;
 
-	private final Path root = Paths.get("uploads");
+	private final Path root = Paths.get(configRoot);
 
 	@Override
 	public void saveAllFile(MultipartFile file) throws FileSystemException {

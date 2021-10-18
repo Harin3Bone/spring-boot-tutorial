@@ -46,4 +46,5 @@ public class FileController {
 		log.info("uploadImageFile Finish.");
 		return ResponseEntity.ok("Upload " + file.getOriginalFilename());
 	}
+
 }

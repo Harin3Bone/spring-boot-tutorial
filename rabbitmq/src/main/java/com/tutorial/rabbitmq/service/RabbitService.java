@@ -6,11 +6,11 @@ import com.tutorial.rabbitmq.entity.TransactionEntity;
 
 public interface RabbitService {
 
-	void publishWorkerValueQueue(String value);
+	void sendStringQueue(String value);
 	
-	void publishWorkerValueQueue(int value);
+	void sendNumberQueue(int value);
 	
-	void publishWorkerReferenceQueue(Map<String,Object> value);
+	void sendReferenceQueue(Map<String,Object> value);
 	
-	void publishWorkerObjectQueue(TransactionEntity value);
+	void sendObjectQueue(TransactionEntity value);
 }

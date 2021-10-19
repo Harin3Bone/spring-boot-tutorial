@@ -17,32 +17,32 @@ import com.tutorial.rabbitmq.impl.WorkerImpl;
 @RestController
 @RequestMapping(value = "/worker")
 @CrossOrigin(allowedHeaders = "*", origins = "*")
-public class TopicController {
+public class WorkerController {
 
 	@Autowired
 	WorkerImpl rabbitService;
 
 	@PostMapping(value = "/value/string")
 	public ResponseEntity<Object> sendValueTopicStringQueue(@RequestBody Map<String, String> body) {
-		rabbitService.publishWorkerValueQueue(body.get("key"));
+		rabbitService.sendStringQueue(body.get("key"));
 		return ResponseEntity.status(HttpStatus.OK).body("Send worker queue [primitive] success.");
 	}
 
 	@PostMapping(value = "/value/number")
 	public ResponseEntity<Object> sendValueTopicNumberQueue(@RequestBody Map<String, Integer> body) {
-		rabbitService.publishWorkerValueQueue(body.get("key"));
+		rabbitService.sendNumberQueue(body.get("key"));
 		return ResponseEntity.status(HttpStatus.OK).body("Send worker queue [primitive] success.");
 	}
 
 	@PostMapping(value = "/value/reference")
 	public ResponseEntity<Object> sendValueTopicReferenceQueue(@RequestBody Map<String, Object> body) {
-		rabbitService.publishWorkerReferenceQueue(body);
+		rabbitService.sendReferenceQueue(body);
 		return ResponseEntity.status(HttpStatus.OK).body("Send worker queue [non-primitive] success.");
 	}
 
 	@PostMapping(value = "/value/object")
 	public ResponseEntity<Object> sendValueTopicObjectQueue(@RequestBody TransactionEntity body) {
-		rabbitService.publishWorkerObjectQueue(body);
+		rabbitService.sendObjectQueue(body);
 		return ResponseEntity.status(HttpStatus.OK).body("Send worker queue [non-primitive] success.");
 	}
 }

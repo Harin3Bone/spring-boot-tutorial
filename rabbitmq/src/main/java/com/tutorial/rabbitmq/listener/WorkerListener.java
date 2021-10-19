@@ -11,7 +11,7 @@ import lombok.extern.log4j.Log4j2;
 
 @Configuration
 @Log4j2
-public class TopicListener {
+public class WorkerListener {
 
 	@RabbitListener(queues = "primitive-string-queue")
 	public void topicStringListener(String in) {

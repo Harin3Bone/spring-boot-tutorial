@@ -8,22 +8,22 @@ import org.springframework.amqp.core.Queue;
 public class WorkerQueue {
 
 	@Bean
-	public Queue topicStringQueue() {
-		return new Queue("primitive-string-queue", false);
+	public Queue workerStringQueue() {
+		return new Queue("worker-string-queue", false);
 	}
 	
 	@Bean
-	public Queue topicNumberQueue() {
-		return new Queue("primitive-number-queue", false);
+	public Queue workerNumberQueue() {
+		return new Queue("worker-number-queue", false);
 	}
 	
 	@Bean
-	public Queue topicReferenceQueue() {
-		return new Queue("non-primitive-reference-queue", false);
+	public Queue workerReferenceQueue() {
+		return new Queue("worker-reference-queue", false);
 	}
 	
 	@Bean
-	public Queue topicObjectQueue() {
-		return new Queue("non-primitive-object-queue", false);
+	public Queue workerObjectQueue() {
+		return new Queue("worker-object-queue", false);
 	}
 }

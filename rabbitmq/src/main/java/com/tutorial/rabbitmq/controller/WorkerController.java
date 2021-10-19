@@ -23,25 +23,25 @@ public class WorkerController {
 	WorkerImpl rabbitService;
 
 	@PostMapping(value = "/value/string")
-	public ResponseEntity<Object> sendValueTopicStringQueue(@RequestBody Map<String, String> body) {
+	public ResponseEntity<Object> sendValueWorkerStringQueue(@RequestBody Map<String, String> body) {
 		rabbitService.sendStringQueue(body.get("key"));
 		return ResponseEntity.status(HttpStatus.OK).body("Send worker queue [primitive] success.");
 	}
 
 	@PostMapping(value = "/value/number")
-	public ResponseEntity<Object> sendValueTopicNumberQueue(@RequestBody Map<String, Integer> body) {
+	public ResponseEntity<Object> sendValueWorkerNumberQueue(@RequestBody Map<String, Integer> body) {
 		rabbitService.sendNumberQueue(body.get("key"));
 		return ResponseEntity.status(HttpStatus.OK).body("Send worker queue [primitive] success.");
 	}
 
 	@PostMapping(value = "/value/reference")
-	public ResponseEntity<Object> sendValueTopicReferenceQueue(@RequestBody Map<String, Object> body) {
+	public ResponseEntity<Object> sendValueWorkerReferenceQueue(@RequestBody Map<String, Object> body) {
 		rabbitService.sendReferenceQueue(body);
 		return ResponseEntity.status(HttpStatus.OK).body("Send worker queue [non-primitive] success.");
 	}
 
 	@PostMapping(value = "/value/object")
-	public ResponseEntity<Object> sendValueTopicObjectQueue(@RequestBody TransactionEntity body) {
+	public ResponseEntity<Object> sendValueWorkerObjectQueue(@RequestBody TransactionEntity body) {
 		rabbitService.sendObjectQueue(body);
 		return ResponseEntity.status(HttpStatus.OK).body("Send worker queue [non-primitive] success.");
 	}

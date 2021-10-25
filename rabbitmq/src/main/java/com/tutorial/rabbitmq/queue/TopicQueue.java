@@ -11,58 +11,38 @@ import org.springframework.context.annotation.Configuration;
 public class TopicQueue {
 
 	@Bean
-	public Queue topicStringQueue() {
-		return new Queue("topic-string-queue", false);
-	}
-
-	@Bean
-	public Queue topicNumberQueue() {
-		return new Queue("topic-number-queue", false);
-	}
-
-	@Bean
-	public Queue topicReferenceQueue() {
-		return new Queue("topic-reference-queue", false);
-	}
-
-	@Bean
-	public Queue topicObjectQueue() {
-		return new Queue("topic-object-queue", false);
+	public Queue topicStringSQueue() {
+		return new Queue("topic-string-small", false);
 	}
 	
 	@Bean
-	public Queue topicMatchQueue() {
-		return new Queue("topic-all-queue", false);
+	public Queue topicStringLQueue() {
+		return new Queue("topic-string-large", false);
 	}
-
+	
+	@Bean
+	public Queue topicStringAQueue() {
+		return new Queue("topic-string-all", false);
+	}
 
 	@Bean
 	TopicExchange exchange() {
-		return new TopicExchange("topic-exchange");
+		return new TopicExchange("topic.exchange");
 	}
 
 	@Bean
-	public Binding topicAllBinding(Queue topicMatchQueue, TopicExchange exchange) {
-		return BindingBuilder.bind(topicMatchQueue).to(exchange).with("*-string-*");
+	public Binding topicStringSBinding(Queue topicStringSQueue, TopicExchange exchange) {
+		return BindingBuilder.bind(topicStringSQueue).to(exchange).with("topic.string.small");
+	}
+	
+	@Bean
+	public Binding topicStringLBinding(Queue topicStringLQueue, TopicExchange exchange) {
+		return BindingBuilder.bind(topicStringLQueue).to(exchange).with("topic.string.large");
+	}
+	
+	@Bean
+	public Binding topicStringABinding(Queue topicStringAQueue, TopicExchange exchange) {
+		return BindingBuilder.bind(topicStringAQueue).to(exchange).with("topic.string.*");
 	}
 
-	@Bean
-	public Binding topicStringBinding(Queue topicNumberQueue, TopicExchange exchange) {
-		return BindingBuilder.bind(topicNumberQueue).to(exchange).with("topic-string-*");
-	}
-
-	@Bean
-	public Binding topicNumberBinding(Queue topicReferenceQueue, TopicExchange exchange) {
-		return BindingBuilder.bind(topicReferenceQueue).to(exchange).with("topic-number-*");
-	}
-
-	@Bean
-	public Binding topicReferenceBinding(Queue topicStringQueue, TopicExchange exchange) {
-		return BindingBuilder.bind(topicStringQueue).to(exchange).with("topic-reference-*");
-	}
-
-	@Bean
-	public Binding topicObjectBinding(Queue topicObjectQueue, TopicExchange exchange) {
-		return BindingBuilder.bind(topicObjectQueue).to(exchange).with("topic-object-*");
-	}
 }

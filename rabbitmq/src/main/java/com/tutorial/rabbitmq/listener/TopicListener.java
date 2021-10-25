@@ -1,11 +1,9 @@
 package com.tutorial.rabbitmq.listener;
 
-import java.util.Map;
-
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
-import com.tutorial.rabbitmq.entity.TransactionEntity;
+import com.tutorial.rabbitmq.impl.TopicImpl;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -13,28 +11,16 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class TopicListener {
 	
-	@RabbitListener(queues = "topic-string-queue")
-	public void topicStringListener(String in) {
-		log.info("topicStringListener receive= " + in);
-	}
-
-	@RabbitListener(queues = "topic-number-queue")
-	public void topicNumberListener(int in) {
-		log.info("topicNumberListener receive= " + in);
-	}
-
-	@RabbitListener(queues = "topic-reference-queue")
-	public void topicNumberListener(Map<String, Object> in) {
-		log.info("topicNumberListener receive= " + in.toString());
-	}
-
-	@RabbitListener(queues = "topic-object-queue")
-	public void topicObjectListener(TransactionEntity in) {
-		log.info("topicObjectListener receive= " + in.toString());
-	}
+	@Autowired
+	TopicImpl topicService;
 	
-//	@RabbitListener(queues = "matchtopic-string-queue")
-//	public void topicMatchStringListener(String in) {
-//		log.info("topicMatchStringListener receive= " + in);
+//	@RabbitListener(queues = "topic-string-small")
+//	public void topicStringListenerSmall(String in) {
+//		log.info("topicStringListenerSmall receive= " + in);
+//	}
+//
+//	@RabbitListener(queues = "topic-string-large")
+//	public void topicStringListenerLarge(String in) {
+//		log.info("topicStringListenerLarge receive= " + in);
 //	}
 }

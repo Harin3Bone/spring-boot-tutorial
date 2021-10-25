@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tutorial.rabbitmq.entity.TransactionEntity;
 import com.tutorial.rabbitmq.impl.TopicImpl;
 
 @RestController
@@ -22,33 +21,15 @@ public class TopicController {
 	@Autowired
 	TopicImpl rabbitService;
 
-	@PostMapping(value = "/value/string")
-	public ResponseEntity<Object> sendValueTopicStringQueue(@RequestBody Map<String, String> body) {
-		rabbitService.sendStringQueue(body.get("key"));
-		return ResponseEntity.status(HttpStatus.OK).body("Send topic queue [primitive] success.");
-	}
-
-	@PostMapping(value = "/value/number")
-	public ResponseEntity<Object> sendValueTopicNumberQueue(@RequestBody Map<String, Integer> body) {
-		rabbitService.sendNumberQueue(body.get("key"));
-		return ResponseEntity.status(HttpStatus.OK).body("Send topic queue [primitive] success.");
-	}
-
-	@PostMapping(value = "/reference/reference")
-	public ResponseEntity<Object> sendValueTopicReferenceQueue(@RequestBody Map<String, Object> body) {
-		rabbitService.sendReferenceQueue(body);
-		return ResponseEntity.status(HttpStatus.OK).body("Send topic queue [non-primitive] success.");
-	}
-
-	@PostMapping(value = "/reference/object")
-	public ResponseEntity<Object> sendValueTopicObjectQueue(@RequestBody TransactionEntity body) {
-		rabbitService.sendObjectQueue(body);
-		return ResponseEntity.status(HttpStatus.OK).body("Send topic queue [non-primitive] success.");
+	@PostMapping(value = "/value/small")
+	public ResponseEntity<Object> sendValueTopicSmallQueue(@RequestBody Map<String, String> body) {
+		rabbitService.sendStringSmallQueue(body.get("key"));
+		return ResponseEntity.status(HttpStatus.OK).body("Send topic queue [small] success.");
 	}
 	
-	@PostMapping(value = "/value/string/match")
-	public ResponseEntity<Object> sendValueTopicMatchQueue(@RequestBody Map<String, String> body) {
-		rabbitService.sendMatchQueue(body.get("key"));
-		return ResponseEntity.status(HttpStatus.OK).body("Send topic queue (match) [primitive] success.");
+	@PostMapping(value = "/value/large")
+	public ResponseEntity<Object> sendValueTopicLargeQueue(@RequestBody Map<String, String> body) {
+		rabbitService.sendStringLargeQueue(body.get("key"));
+		return ResponseEntity.status(HttpStatus.OK).body("Send topic queue [large] success.");
 	}
 }

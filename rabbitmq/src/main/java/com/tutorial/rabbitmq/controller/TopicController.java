@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,9 +27,16 @@ public class TopicController {
 		rabbitService.sendStringSmallQueue(body.get("key"));
 		return ResponseEntity.status(HttpStatus.OK).body("Send topic queue [small] success.");
 	}
-	
+
 	@PostMapping(value = "/value/large")
 	public ResponseEntity<Object> sendValueTopicLargeQueue(@RequestBody Map<String, String> body) {
+		rabbitService.sendStringLargeQueue(body.get("key"));
+		return ResponseEntity.status(HttpStatus.OK).body("Send topic queue [large] success.");
+	}
+
+	@PostMapping(value = "/value/{value}")
+	public ResponseEntity<Object> sendValueTopicLargeQueue(@RequestBody Map<String, String> body,
+			@PathVariable(name = "value") String value) {
 		rabbitService.sendStringLargeQueue(body.get("key"));
 		return ResponseEntity.status(HttpStatus.OK).body("Send topic queue [large] success.");
 	}

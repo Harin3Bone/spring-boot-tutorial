@@ -1,0 +1,6 @@
+server:
+  port: 3010
+  servlet:    context-path: /tutorial
+    
+spring:  cache:    type: redis
+    redis:      time-to-live: 600000

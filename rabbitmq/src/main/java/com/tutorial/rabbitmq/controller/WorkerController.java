@@ -24,25 +24,25 @@ public class WorkerController {
 
 	@PostMapping(value = "/value/string")
 	public ResponseEntity<Object> sendValueWorkerStringQueue(@RequestBody Map<String, String> body) {
-		rabbitService.publishWorkerValueQueue(body.get("key"));
+		rabbitService.sendStringQueue(body.get("key"));
 		return ResponseEntity.status(HttpStatus.OK).body("Send worker queue [primitive] success.");
 	}
 
 	@PostMapping(value = "/value/number")
 	public ResponseEntity<Object> sendValueWorkerNumberQueue(@RequestBody Map<String, Integer> body) {
-		rabbitService.publishWorkerValueQueue(body.get("key"));
+		rabbitService.sendNumberQueue(body.get("key"));
 		return ResponseEntity.status(HttpStatus.OK).body("Send worker queue [primitive] success.");
 	}
 
 	@PostMapping(value = "/value/reference")
 	public ResponseEntity<Object> sendValueWorkerReferenceQueue(@RequestBody Map<String, Object> body) {
-		rabbitService.publishWorkerReferenceQueue(body);
+		rabbitService.sendReferenceQueue(body);
 		return ResponseEntity.status(HttpStatus.OK).body("Send worker queue [non-primitive] success.");
 	}
 
 	@PostMapping(value = "/value/object")
 	public ResponseEntity<Object> sendValueWorkerObjectQueue(@RequestBody TransactionEntity body) {
-		rabbitService.publishWorkerObjectQueue(body);
+		rabbitService.sendObjectQueue(body);
 		return ResponseEntity.status(HttpStatus.OK).body("Send worker queue [non-primitive] success.");
 	}
 }

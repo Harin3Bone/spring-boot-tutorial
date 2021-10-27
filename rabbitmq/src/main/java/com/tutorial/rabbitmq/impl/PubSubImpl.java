@@ -14,25 +14,25 @@ public class PubSubImpl implements RabbitService {
 	RabbitTemplate rabbitTemplate;
 	
 	@Override
-	public void publishWorkerValueQueue(String value) {
+	public void sendStringQueue(String value) {
 		
 
 	}
 
 	@Override
-	public void publishWorkerValueQueue(int value) {
+	public void sendNumberQueue(int value) {
 		
 		
 	}
 
 	@Override
-	public void publishWorkerReferenceQueue(Map<String, Object> value) {
+	public void sendReferenceQueue(Map<String, Object> value) {
 		
 		
 	}
 
 	@Override
-	public void publishWorkerObjectQueue(TransactionEntity value) {
+	public void sendObjectQueue(TransactionEntity value) {
 		
 		
 	}

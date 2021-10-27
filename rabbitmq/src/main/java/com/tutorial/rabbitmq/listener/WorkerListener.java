@@ -13,23 +13,23 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class WorkerListener {
 
-	@RabbitListener(queues = "primitive-string-queue")
+	@RabbitListener(queues = "worker-string-queue")
 	public void workerStringListener(String in) {
 		log.info("workerStringListener receive= " + in);
 	}
 
-	@RabbitListener(queues = "primitive-number-queue")
+	@RabbitListener(queues = "worker-number-queue")
 	public void workerNumberListener(int in) {
 		log.info("workerNumberListener receive= " + in);
 	}
 	
-	@RabbitListener(queues = "non-primitive-reference-queue")
-	public void workerReferenceListener(Map<String,Object> in) {
-		log.info("workerReferenceListener receive= " + in.toString());
+	@RabbitListener(queues = "worker-reference-queue")
+	public void workerNumberListener(Map<String,Object> in) {
+		log.info("workerNumberListener receive= " + in.toString());
 	}
 	
-	@RabbitListener(queues = "non-primitive-object-queue")
-	public void workerReferenceListener(TransactionEntity in) {
-		log.info("workerReferenceListener receive= " + in.toString());
+	@RabbitListener(queues = "worker-object-queue")
+	public void workerObjectListener(TransactionEntity in) {
+		log.info("workerObjectListener receive= " + in.toString());
 	}
 }

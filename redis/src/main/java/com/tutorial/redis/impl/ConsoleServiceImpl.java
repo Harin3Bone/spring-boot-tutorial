@@ -18,28 +18,32 @@ public class ConsoleServiceImpl implements ConsoleService {
 
 	@Override
 	public List<ConsoleModel> getAllConsole() {
-		
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ConsoleModel getConsoleById() {
-		
+	public ConsoleModel getConsoleById(long id) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void createConsole() {
+	public void createConsole(ConsoleModel model) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void updateConsole() {
+	public void updateConsole(ConsoleModel model) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteConsole() {
+	public void deleteConsole(long id) {
+		// TODO Auto-generated method stub
 		
 	}
+
 }

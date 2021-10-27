@@ -7,12 +7,12 @@ import com.tutorial.redis.model.ConsoleModel;
 public interface ConsoleService {
 
 	List<ConsoleModel> getAllConsole();
-	
-	ConsoleModel getConsoleById();
-	
-	void createConsole();
-	
-	void updateConsole();
-	
-	void deleteConsole();
+
+	ConsoleModel getConsoleById(long id);
+
+	void createConsole(ConsoleModel model);
+
+	void updateConsole(ConsoleModel model);
+
+	void deleteConsole(long id);
 }

@@ -38,13 +38,13 @@ public class ConsoleController {
 		consoleService.createConsole(body);
 		return ResponseEntity.status(HttpStatus.OK).body(body);
 	}
-	
+
 	@PutMapping(value = "")
 	public ResponseEntity<Object> updateConsole(@RequestBody ConsoleModel body) {
-		consoleService.updateConsole(body);
+		consoleService.updateConsole(body.getId(), body);
 		return ResponseEntity.status(HttpStatus.OK).body(body);
 	}
-	
+
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Object> deleteConsoleById(@PathVariable(name = "id") long id) {
 		consoleService.deleteConsole(id);

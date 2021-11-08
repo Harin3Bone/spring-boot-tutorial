@@ -12,7 +12,7 @@ public interface ConsoleService {
 
 	void createConsole(ConsoleModel model);
 
-	void updateConsole(ConsoleModel model);
+	void updateConsole(long id, ConsoleModel model);
 
 	void deleteConsole(long id);
 }

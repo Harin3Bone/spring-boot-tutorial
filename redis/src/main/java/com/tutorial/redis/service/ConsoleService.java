@@ -1,6 +1,7 @@
 package com.tutorial.redis.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.tutorial.redis.model.ConsoleModel;
 
@@ -10,9 +11,9 @@ public interface ConsoleService {
 
 	ConsoleModel getConsoleById(long id);
 
-	void createConsole(ConsoleModel model);
+	ConsoleModel createConsole(ConsoleModel model);
 
-	void updateConsole(long id, ConsoleModel model);
+	Optional<ConsoleModel> updateConsole(long id, ConsoleModel model);
 
-	void deleteConsole(long id);
+	boolean deleteConsole(long id);
 }

@@ -1,3 +1,4 @@
+
 DROP TABLE IF EXISTS Character;
 
 CREATE TABLE Character (

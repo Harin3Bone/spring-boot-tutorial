@@ -1,0 +1,32 @@
+server:
+  port: 3010
+  servlet:    context-path: /tutorial
+    
+spring:
+  datasource:
+    url: jdbc:h2:mem:test
+    username: sa 
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    database-platform: org.hibernate.dialect.H2Dialect 
+    initialization-mode: always  
+  h2:
+    console:
+      enabled: true    
+      path: /db-console
+      settings:
+        web-allow-others: true  cache:    type: redis
+    redis:
+      key-prefix: tutorial-
+      use-key-prefix: true
+      enable-statistics: true      time-to-live: 600000
+  redis:    host: localhost
+    username: default
+    password: password
+    port: 6379
+    database: 0
+    

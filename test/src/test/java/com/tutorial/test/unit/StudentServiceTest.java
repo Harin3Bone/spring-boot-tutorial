@@ -14,6 +14,7 @@ import com.tutorial.test.model.CalculatorModel;
 import com.tutorial.test.model.StudentModel;
 
 @ExtendWith(MockitoExtension.class)
+@DisplayName("StudentService")
 class StudentServiceTest {
 
 	@Mock

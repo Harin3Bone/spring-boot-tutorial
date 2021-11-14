@@ -1,0 +1,13 @@
+server:
+  port: 3004
+  servlet:
+    context-path: /tutorial
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver 
+    initialization-mode: always
+    

@@ -21,10 +21,10 @@ import com.tutorial.jdbc.entity.ServantEntity;
 import com.tutorial.jdbc.service.ServantService;
 
 @RestController
-@RequestMapping(value = "/servant")
+@RequestMapping(value = "/mysql/servant")
 @CrossOrigin(allowedHeaders = "*", origins = "*")
-@Profile(value = { "h2" })
-public class ServantController {
+@Profile(value = { "mysql" })
+public class MySQLController {
 
 	@Autowired
 	private ServantService servantService;
@@ -64,5 +64,4 @@ public class ServantController {
 		servantService.deleteServantById(id);
 		return ResponseEntity.status(HttpStatus.OK).body("remove servant success");
 	}
-
 }

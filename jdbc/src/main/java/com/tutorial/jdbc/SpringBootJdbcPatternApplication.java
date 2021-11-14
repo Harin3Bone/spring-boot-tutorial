@@ -1,7 +1,7 @@
 package com.tutorial.jdbc;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @SpringBootApplication
@@ -9,7 +9,11 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 public class SpringBootJdbcPatternApplication {
 
 	public static void main(String[] args) {	
-		SpringApplication.run(SpringBootJdbcPatternApplication.class, args);
+		new SpringApplicationBuilder(SpringBootJdbcPatternApplication.class)
+//			.profiles("h2", "mysql")
+//			.profiles("h2")
+			.profiles("mysql")
+			.run(args);
 	}
 
 }

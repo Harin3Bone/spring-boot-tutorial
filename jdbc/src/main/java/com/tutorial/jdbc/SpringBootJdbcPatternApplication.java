@@ -12,7 +12,8 @@ public class SpringBootJdbcPatternApplication {
 		new SpringApplicationBuilder(SpringBootJdbcPatternApplication.class)
 //			.profiles("h2", "mysql")
 //			.profiles("h2")
-			.profiles("mysql")
+//			.profiles("mysql")
+			.profiles("postgres")
 			.run(args);
 	}
 

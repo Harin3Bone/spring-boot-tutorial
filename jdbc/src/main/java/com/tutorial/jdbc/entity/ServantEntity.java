@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Profile(value = { "h2", "mysql" })
+@Profile(value = { "h2", "mysql", "postgres" })
 public class ServantEntity {
 
 	private long id;

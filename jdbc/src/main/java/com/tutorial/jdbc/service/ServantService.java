@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.tutorial.jdbc.entity.ServantEntity;
 
 @Service
-@Profile(value = { "h2", "mysql" })
+@Profile(value = { "h2", "mysql", "postgres" })
 public class ServantService {
 
 	@Autowired

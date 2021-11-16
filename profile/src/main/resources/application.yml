@@ -1,0 +1,7 @@
+server:
+  port: 3013
+  servlet:    context-path: /tutorial
+ 
+spring:  profiles:    active:    - local
+    
+message: I AM LOCAL PROFILE

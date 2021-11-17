@@ -21,5 +21,6 @@ public class LocalController {
 	@GetMapping(value = "")
 	public ResponseEntity<Object> getLocalProfile() {
 		return ResponseEntity.ok(env.getProperty("message"));
+		
 	}
 }

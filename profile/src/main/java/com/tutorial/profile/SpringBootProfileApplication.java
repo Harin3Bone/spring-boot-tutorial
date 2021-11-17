@@ -7,7 +7,12 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 public class SpringBootProfileApplication {
 
 	public static void main(String[] args) {
-		new SpringApplicationBuilder(SpringBootProfileApplication.class).profiles("dev", "prod").run(args);
+		new SpringApplicationBuilder(SpringBootProfileApplication.class)
+			.profiles("dev", "prod")
+//			.profiles("local")
+//			.profiles("dev")
+//			.profiles("prod")
+			.run(args);
 	}
 
 }

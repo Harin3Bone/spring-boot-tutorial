@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tutorial.jdbc.entity.ServantEntity;
-import com.tutorial.jdbc.service.ServantService;
+import com.tutorial.jdbc.impl.ServantServiceImpl;
 
 @RestController
 @RequestMapping(value = "/postgres/servant")
@@ -27,7 +27,7 @@ import com.tutorial.jdbc.service.ServantService;
 public class PostgreSQLController {
 
 	@Autowired
-	private ServantService servantService;
+	private ServantServiceImpl servantService;
 
 	@GetMapping(value = "")
 	public ResponseEntity<Object> getAllServant() {

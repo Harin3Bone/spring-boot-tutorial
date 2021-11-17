@@ -1,0 +1,5 @@
+server:
+  port: 3013
+  servlet:    context-path: /tutorial
+    
+message: I AM PRODUCTION PROFILE

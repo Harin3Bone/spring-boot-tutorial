@@ -1,0 +1,22 @@
+{"properties": [
+  {
+    "name": "config.admin.username",
+    "type": "java.lang.String",
+    "description": "A description for 'config.admin.username'"
+  },
+  {
+    "name": "config.admin.password",
+    "type": "java.lang.String",
+    "description": "A description for 'config.admin.password'"
+  },
+  {
+    "name": "config.user.username",
+    "type": "java.lang.String",
+    "description": "A description for 'config.user.username'"
+  },
+  {
+    "name": "config.user.password",
+    "type": "java.lang.String",
+    "description": "A description for 'config.user.password'"
+  }
+]}

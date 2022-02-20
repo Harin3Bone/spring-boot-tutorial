@@ -20,16 +20,39 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class QueueProducer {
 
+	private static final String MSG_TOPIC = "message";
+	private static final String MSG_CON_TOPIC = "message_con";
+
 	@Autowired
 	KafkaService kafkaService;
 
 	@PostMapping(value = "/message")
 	public ResponseEntity<Map<String, Object>> sendStringMessage(@RequestBody Map<String, Object> body) {
 		log.info("sendStringMessage Begin.");
-		kafkaService.produceStringMessage(body.get("msg").toString());
-		
+		kafkaService.produceStringMessage(MSG_TOPIC, body.get("msg").toString());
+
 		body.put("status", "success");
 		log.info("sendStringMessage Finished.");
+		return ResponseEntity.ok(body);
+	}
+
+	@PostMapping(value = "/message/v2")
+	public ResponseEntity<Map<String, Object>> sendStringMessageConsumer(@RequestBody Map<String, Object> body) {
+		log.info("sendStringMessageConsumer Begin.");
+		kafkaService.produceStringMessage(MSG_CON_TOPIC, body.get("msg").toString());
+
+		body.put("status", "success");
+		log.info("sendStringMessageConsumer Finished.");
+		return ResponseEntity.ok(body);
+	}
+
+	@PostMapping(value = "/object")
+	public ResponseEntity<Object> sendObjectMessage(@RequestBody Map<String, Object> body) {
+		log.info("sendObjectMessage Begin.");
+		kafkaService.sendObjectMessage(body);
+
+		body.put("status", "success");
+		log.info("sendObjectMessage Finished.");
 		return ResponseEntity.ok(body);
 	}
 }

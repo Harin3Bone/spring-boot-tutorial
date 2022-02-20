@@ -1,0 +1,3 @@
+server:
+  port: 3016
+  servlet:    context-path: /tutorial

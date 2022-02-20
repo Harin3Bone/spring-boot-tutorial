@@ -2,7 +2,6 @@ package com.tutorial.websocket.controller;
 
 import java.sql.Timestamp;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,11 +16,11 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class WebSocketController {
 
-	@MessageMapping(value = "/websocket")
+	@MessageMapping(value = "/basic")
 	@SendTo(value = "/topic/app")
-	public ResponseEntity<Object> websocketSample(MessageCaller caller) throws Exception {
+	public MessageCaller websocketSample(MessageCaller caller) throws Exception {
 		log.info("websocketSample " + new Timestamp(System.currentTimeMillis()));
-		Thread.sleep(1000);
-		return ResponseEntity.ok("Hello World !!!");
+		Thread.sleep(500);
+		return caller;
 	}
 }

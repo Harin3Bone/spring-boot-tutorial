@@ -8,13 +8,12 @@ import lombok.extern.log4j.Log4j2;
 
 @Configuration
 @Log4j2
-public class QueueConsumer {
+public class StringConsumer {
 	
-	private static final String MSG_TOPIC = "message";
+	private static final String MSG_DIR_TOPIC = "message_dir";
 	private static final String MSG_CON_TOPIC = "message_con";
-	private static final String OBJ_TOPIC = "object";
 
-	@KafkaListener(topics = MSG_TOPIC, groupId = "tutorial")
+	@KafkaListener(topics = MSG_DIR_TOPIC, groupId = "tutorial")
 	public void listenStringMessage(String msg) {
 		log.info("listenStringMessage " + msg);
 	}
@@ -23,11 +22,5 @@ public class QueueConsumer {
 	public void listenStringMessage(ConsumerRecord<String, String> msg) {
 		String newMsg = msg.value();
 		log.info("listenStringMessage " + newMsg);
-	}
-	
-	@KafkaListener(topics = OBJ_TOPIC, groupId = "tutorial")
-	public void listenObjectMessage(String msg) {
-		log.info("listenObjectMessage " + msg);
-		
 	}
 }

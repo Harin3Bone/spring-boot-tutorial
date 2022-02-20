@@ -1,0 +1,12 @@
+server:
+  port: 3015
+  servlet:    context-path: /tutorial
+  
+config:
+  admin:
+    username: myadmin
+    password: adminpassword
+  user:
+    username: myuser
+    password: userpassword
+  

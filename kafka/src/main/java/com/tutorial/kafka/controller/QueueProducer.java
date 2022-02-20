@@ -16,19 +16,18 @@ import lombok.extern.log4j.Log4j2;
 
 @RestController
 @CrossOrigin(allowedHeaders = "*", origins = "*")
-@RequestMapping(value = "/message")
+@RequestMapping(value = "/send")
 @Log4j2
-public class QueueController {
+public class QueueProducer {
 
 	@Autowired
 	KafkaService kafkaService;
 
-	@PostMapping(value = "/send")
-	public ResponseEntity<Map<String, String>> sendStringMessage(@RequestBody Map<String, String> body) {
+	@PostMapping(value = "/message")
+	public ResponseEntity<Map<String, Object>> sendStringMessage(@RequestBody Map<String, Object> body) {
 		log.info("sendStringMessage Begin.");
-
 		kafkaService.produceStringMessage(body.get("msg").toString());
-
+		
 		body.put("status", "success");
 		log.info("sendStringMessage Finished.");
 		return ResponseEntity.ok(body);

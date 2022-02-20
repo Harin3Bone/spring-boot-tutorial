@@ -36,7 +36,7 @@ public class StringProducer {
 		return ResponseEntity.ok(body);
 	}
 
-	@PostMapping(value = "/cosumer")
+	@PostMapping(value = "/consumer")
 	public ResponseEntity<Map<String, Object>> sendStringMessageConsumer(@RequestBody Map<String, Object> body) {
 		log.info("sendStringMessageConsumer Begin.");
 		kafkaService.produceStringMessage(MSG_CON_TOPIC, body.get("msg").toString());
